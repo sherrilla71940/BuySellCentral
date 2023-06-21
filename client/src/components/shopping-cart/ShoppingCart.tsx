@@ -80,7 +80,7 @@ export default function ShoppingCart() {
 
   async function getShoppingCartId() {
     const response = await fetch(
-      `http://localhost:3000/getoneshoppingcart/${id}`
+      `http://localhost:3003/getoneshoppingcart/${id}`
     );
     const data = await response.json();
     const cartId = data.id;
@@ -102,7 +102,7 @@ export default function ShoppingCart() {
       };
       console.log(payload);
       // console.log(payload);
-      const response = await fetch("http://localhost:3000/checkout", {
+      const response = await fetch("http://localhost:3003/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

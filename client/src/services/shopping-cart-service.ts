@@ -1,6 +1,6 @@
 export async function addToShoppingCart(body: any) {
   try {
-    const response = await fetch("http://localhost:3000/shoppingcart", {
+    const response = await fetch("http://localhost:3003/shoppingcart", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -20,7 +20,7 @@ export async function addToShoppingCart(body: any) {
 
 export async function deleteProductFromShoppingCart(body: any) {
   try {
-    const response = await fetch("http://localhost:3000/shoppingcart", {
+    const response = await fetch("http://localhost:3003/shoppingcart", {
       method: "DELETE",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -42,7 +42,7 @@ export async function getShoppingCartProducts(uid: string) {
   try {
     console.log(uid);
     const response = await fetch(
-      `http://localhost:3000/shoppingcartproducts/${uid}`,
+      `http://localhost:3003/shoppingcartproducts/${uid}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -63,7 +63,7 @@ export async function getShoppingCartProducts(uid: string) {
 export async function getShoppingCartProduct(pid: number) {
   try {
     const response = await fetch(
-      `http://localhost:3000/shoppingcartproduct/${pid}`,
+      `http://localhost:3003/shoppingcartproduct/${pid}`,
       {
         method: "GET",
         headers: { "Content-Type": "application/json" },
