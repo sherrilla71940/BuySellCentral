@@ -16,12 +16,31 @@ import ProductForm from "./components/product-form/product-form";
 import { userStore, UserState } from "./zustand/UserStore";
 import SellerStore from "./components/seller-store/SellerStore";
 // import { useStore } from 'zustand';
+import { useEffect } from "react";
 
 function App() {
-  const { id } = userStore();
+  // const store = userStore();
+  const { id, setID } = userStore();
 
-  const { loggedIn } = userStore();
-  // console.log(loggedIn)
+  // // const { loggedIn } = userStore();
+  // const { setLoggedIn, setID } = userStore();
+  // // console.log(loggedIn)
+
+  // useEffect(() => {
+  //   if (localStorage.getItem("user")) {
+  //     setLoggedIn(true);
+  //     console.log(localStorage.getItem("user"));
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    console.log("getting id", localStorage.getItem("id"));
+    const id = localStorage.getItem("id");
+    console.log("id", id);
+    if (id) {
+      setID(id);
+    }
+  }, []);
 
   return (
     <>

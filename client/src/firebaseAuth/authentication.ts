@@ -50,7 +50,7 @@ export async function loginUser(email: string, password: string) {
     const userToken = await user.getIdToken();
     // console.log("token", user);
     localStorage.setItem("user", userToken);
-    return { id: user.uid, loggedIn: true, userObj: user };
+    return { id: user.uid, loggedIn: true };
   } catch (e) {
     console.log(e);
     return { id: "", loggedIn: false };

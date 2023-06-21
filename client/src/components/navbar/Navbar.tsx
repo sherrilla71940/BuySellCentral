@@ -6,6 +6,7 @@ import { userStore } from "./../../zustand/UserStore";
 import { menuStore } from "../../zustand/menuStore";
 import firebase from "firebase/compat/app";
 // import logo from './../../assets/logo.png'
+import { useEffect } from "react";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -23,6 +24,17 @@ export default function Navbar() {
   function clickAvatar() {
     setVisibility(true);
   }
+
+  // const { loggedIn } = userStore();
+  const { setLoggedIn, setID } = userStore();
+  // console.log(loggedIn)
+
+  useEffect(() => {
+    if (localStorage.getItem("user")) {
+      setLoggedIn(true);
+      console.log(localStorage.getItem("user"));
+    }
+  }, []);
 
   return (
     <nav className={styles.navbarContainerSticky}>

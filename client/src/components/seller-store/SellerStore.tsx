@@ -10,9 +10,14 @@ export default function SellerStore() {
   const [products, setProducts] = useState<ProductType[]>([]);
   console.log(products);
   const { id } = userStore();
+  // useEffect(() => {
+  //   console.log("id", id);
+  //   console.log("storage id", localStorage.getItem("id"));
+  // });
 
   useEffect(() => {
     const fetchProducts = async () => {
+      // console.log("id", id);
       try {
         const products: ProductType[] | undefined = await getSellerProducts(id);
         if (Array.isArray(products)) {

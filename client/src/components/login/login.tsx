@@ -39,13 +39,15 @@ export default function Login() {
   async function login(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
     const user = await loginFunction(email, password);
-    const token = await user?.userObj?.getIdToken();
-    console.log(token);
-    console.log("token", token);
-    console.log("after token");
+    // const token = await user?.userObj?.getIdToken();
+    // console.log(token);
+    // console.log("token", token);
+    // console.log("after token");
     // console.log(user.userToken);
     setID(user.id);
+    localStorage.setItem("id", user.id);
     setLoggedIn(user.loggedIn);
+    localStorage.setItem("loggedIn", user.loggedIn.toString());
     if (user.loggedIn === true) {
       navigate("/");
     } else {
@@ -74,14 +76,17 @@ export default function Login() {
     e.preventDefault();
     const target = e.target as HTMLInputElement;
     setUsername(target.value);
+    username && localStorage.setItem("username", target.value);
   }
   function emailHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
     setEmail(target.value);
+    localStorage.setItem("email", target.value);
   }
   function passHandler(e: React.ChangeEvent<HTMLInputElement>) {
     const target = e.target as HTMLInputElement;
     setPassword(target.value);
+    localStorage.setItem("password", target.value);
   }
 
   return (
