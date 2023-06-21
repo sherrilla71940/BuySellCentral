@@ -1,4 +1,5 @@
 // Import the functions you need from the SDKs you need
+import firebase from "firebase/compat/app";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import {
@@ -27,6 +28,7 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+// console.log("token", firebase.User.getToken());
 
 // Initialize Firebase
 // const firebaseApp = initializeApp(firebaseConfig);
@@ -45,7 +47,10 @@ export async function loginUser(email: string, password: string) {
       password
     );
     const user = userCredential.user;
-    return { id: user.uid, loggedIn: true };
+    const userToken = await user.getIdToken();
+    // console.log("token", user);
+    localStorage.setItem("user", userToken);
+    return { id: user.uid, loggedIn: true, userObj: user };
   } catch (e) {
     console.log(e);
     return { id: "", loggedIn: false };

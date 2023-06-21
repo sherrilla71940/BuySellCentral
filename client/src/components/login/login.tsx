@@ -39,6 +39,11 @@ export default function Login() {
   async function login(e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
     const user = await loginFunction(email, password);
+    const token = await user?.userObj?.getIdToken();
+    console.log(token);
+    console.log("token", token);
+    console.log("after token");
+    // console.log(user.userToken);
     setID(user.id);
     setLoggedIn(user.loggedIn);
     if (user.loggedIn === true) {

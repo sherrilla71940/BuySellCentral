@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useCartSlice } from "./../../zustand/ShoppingCartSlice";
 import { userStore } from "./../../zustand/UserStore";
 import { menuStore } from "../../zustand/menuStore";
+import firebase from "firebase/compat/app";
 // import logo from './../../assets/logo.png'
 
 export default function Navbar() {
