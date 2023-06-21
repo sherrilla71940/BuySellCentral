@@ -41,7 +41,7 @@ export default function Navbar() {
       <div className={styles.navbarContainerBlock}>
         {/* <img className={styles.img} alt='store_logo' src={logo} /> */}
         <h1 className={styles.navbarLeft} onClick={() => navigate("/")}>
-          E-COMMERCE
+          BuySellCentral
         </h1>
 
         <input className={styles.navbarCenter} />
