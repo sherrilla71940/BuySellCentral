@@ -31,13 +31,14 @@ export default function StoreItems() {
 
     fetcAllStoreProducts();
     console.log(shouldReRender);
-  }, [shouldReRender, storeItems]);
+  }, [shouldReRender]);
 
   return (
     <div className={styles.storeItems}>
-      {storeItems.map((product: ProductType) => (
-        <Item key={product.id} product={product} />
-      ))}
+      {storeItems.map(
+        (product: ProductType) =>
+          product.quantity >= 1 && <Item key={product.id} product={product} />
+      )}
     </div>
   );
 }
