@@ -31,7 +31,7 @@ export default function StoreItems() {
 
     fetcAllStoreProducts();
     console.log(shouldReRender);
-  }, [shouldReRender]);
+  }, [shouldReRender, storeItems]);
 
   return (
     <div className={styles.storeItems}>
