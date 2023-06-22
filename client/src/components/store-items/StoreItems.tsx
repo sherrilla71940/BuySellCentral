@@ -12,6 +12,7 @@ export default function StoreItems() {
   const { shouldReRender, setRerender } = renderProductsStore();
   const storeItems = useProductsSlice((state) => state.storeItems);
   const addProduct = useProductsSlice((state) => state.addProduct);
+  const removeProduct = useProductsSlice((state) => state.removeProduct);
 
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
@@ -21,6 +22,7 @@ export default function StoreItems() {
         const storeProducts = await getStoreProducts();
 
         storeProducts.forEach((product: ProductType) => {
+          // removeProduct(product.id);
           addProduct(product);
         });
         console.log("24: ", storeItems);
@@ -30,6 +32,7 @@ export default function StoreItems() {
     };
 
     fetcAllStoreProducts();
+    console.log("store:", storeItems);
     console.log(shouldReRender);
   }, [shouldReRender]);
 

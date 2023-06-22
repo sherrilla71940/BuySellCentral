@@ -8,6 +8,7 @@ type ProductsState = {
 
 type ProductsAction = {
   addProduct: (newProduct: ProductType) => void;
+  removeProduct: (id: number) => void;
 };
 
 // export const useProductsSlice = create<ProductsState & ProductsAction>()(
@@ -46,6 +47,18 @@ export const useProductsSlice = create<ProductsState & ProductsAction>()(
           return { storeItems: [...state.storeItems, { ...newProduct }] };
         }
       }); // Missing closing parenthesis here
+    },
+
+    removeProduct: (id: number) => {
+      set((state) => {
+        const foundIndex = state.storeItems.findIndex((item) => item.id === id);
+        if (foundIndex !== -1) {
+          const updatedItems = [...state.storeItems];
+          updatedItems.splice(foundIndex, 1); // Remove the item from the array
+          return { storeItems: updatedItems };
+        }
+        return state; // Return the state as is if the item was not found
+      });
     },
   })
 );

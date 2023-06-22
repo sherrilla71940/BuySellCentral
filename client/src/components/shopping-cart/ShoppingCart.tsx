@@ -115,9 +115,11 @@ export default function ShoppingCart() {
       // set state to rerender
       setRerender(!shouldReRender);
       // setRerender();
+      // setTimeout(() => {
       emptyCart();
       closeCart();
       navigate("/");
+      // });
     }
   }
 
