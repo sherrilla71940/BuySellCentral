@@ -17,7 +17,7 @@ export default function StoreItems() {
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
   useEffect(() => {
-    const fetcAllStoreProducts = async () => {
+    const fetchAllStoreProducts = async () => {
       try {
         const storeProducts = await getStoreProducts();
 
@@ -31,7 +31,7 @@ export default function StoreItems() {
       }
     };
 
-    fetcAllStoreProducts();
+    fetchAllStoreProducts();
     console.log("store:", storeItems);
     console.log(shouldReRender);
   }, [shouldReRender]);

@@ -11,12 +11,17 @@ import { renderProductsStore } from "../../zustand/should-refetch-slice";
 import { useNavigate } from "react-router-dom";
 import { empty } from "uuidv4";
 import StoreItems from "../store-items/StoreItems";
+import { useProductsSlice } from "../../zustand/ProductSlice";
+
+import { useRef } from "react";
 
 export default function ShoppingCart() {
   const { shouldReRender, setRerender } = renderProductsStore();
+  const removeProduct = useProductsSlice((state) => state.removeProduct);
   // const { shouldReRender, setRerender } = renderCartStore();
   const id = userStore((state) => state.id);
   // let id;
+  const counter = useRef(0);
 
   // (async () => {
   //   id = userStore((state) => state.id
@@ -113,12 +118,22 @@ export default function ShoppingCart() {
       // console.log(payload);
 
       // set state to rerender
+      console.log("current", counter);
+      counter.current++;
+      console.log("current", counter.current);
+      console.log("useEffect called");
+      console.log("before changing render value", shouldReRender);
       setRerender(!shouldReRender);
+      // setRerender((prevShouldReRender: boolean) => {
+      //   return !prevShouldReRender;
+      // });
+      console.log("after changing render value", shouldReRender);
       // setRerender();
       // setTimeout(() => {
       emptyCart();
       closeCart();
       navigate("/");
+      location.reload();
       // });
     }
   }

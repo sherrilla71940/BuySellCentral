@@ -53,8 +53,8 @@ export const useProductsSlice = create<ProductsState & ProductsAction>()(
       set((state) => {
         const foundIndex = state.storeItems.findIndex((item) => item.id === id);
         if (foundIndex !== -1) {
-          const updatedItems = [...state.storeItems];
-          updatedItems.splice(foundIndex, 1); // Remove the item from the array
+          // const updatedItems = [...state.storeItems];
+          const updatedItems = [...state.storeItems].slice(foundIndex, 1); // Remove the item from the array
           return { storeItems: updatedItems };
         }
         return state; // Return the state as is if the item was not found
