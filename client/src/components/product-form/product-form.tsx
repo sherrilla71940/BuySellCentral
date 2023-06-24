@@ -161,10 +161,15 @@ import { sellerStore } from "../../zustand/sellerStore";
 import { saveUser, postProduct } from "../../services/seller-service";
 import { postImage } from "./../../cloudinary/apiService";
 
+import { useCartSlice } from "./../../zustand/ShoppingCartSlice";
+import { menuStore } from "../../zustand/menuStore";
+
 const log = console.log.bind(console);
 
 export default function ProductForm() {
   const navigate = useNavigate();
+  const closeCart = useCartSlice((state) => state.closeCart);
+  const { visible, setVisibility } = menuStore();
 
   const { id } = userStore();
 
@@ -202,6 +207,8 @@ export default function ProductForm() {
             quantity: quantity,
             pictureUrl: image,
           });
+          closeCart();
+          setVisibility(false);
           navigate(`/sellers/${id}`);
         } catch (e) {
           console.log(e);
