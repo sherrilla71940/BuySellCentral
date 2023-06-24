@@ -18,9 +18,9 @@ export default function ItemDetails() {
   const addItem = useCartSlice((state) => state.addItem);
   const openCart = useCartSlice((state) => state.openCart);
 
-  useEffect(() => {
-    // setVisibility(false)
-  }, [visible]);
+  // useEffect(() => {
+  //   // setVisibility(false)
+  // }, [visible]);
 
   // URL query and fetch the DB
   // const data = JSON.parse(JSON.stringify(mock))
@@ -102,6 +102,7 @@ export default function ItemDetails() {
               console.log("-->", newCartItem);
               if (newCartItem.productQuantity) {
                 addItem(newCartItem);
+                setVisibility(false);
                 openCart();
               }
             }

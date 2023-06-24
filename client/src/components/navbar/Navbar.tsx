@@ -7,11 +7,13 @@ import { menuStore } from "../../zustand/menuStore";
 import firebase from "firebase/compat/app";
 // import logo from './../../assets/logo.png'
 import { useEffect } from "react";
+// import { useCartSlice } from './../../zustand/ShoppingCartSlice';
 
 export default function Navbar() {
   const navigate = useNavigate();
 
   const openCart = useCartSlice((state) => state.openCart);
+  const closeCart = useCartSlice((state) => state.closeCart);
   const cartItems = useCartSlice((state) => state.cartItems);
 
   const { loggedIn, username, email } = userStore();
@@ -22,7 +24,14 @@ export default function Navbar() {
   }
 
   function clickAvatar() {
+    closeCart();
     setVisibility(true);
+  }
+
+  function switchBar() {
+    console.log("should switch");
+    openCart();
+    setVisibility(false);
   }
 
   // const { loggedIn } = userStore();
@@ -49,7 +58,7 @@ export default function Navbar() {
         <div className={styles.navbarRight}>
           {!loggedIn ? null : (
             <>
-              <div className={styles.cartItems} onClick={() => openCart()}>
+              <div className={styles.cartItems} onClick={switchBar}>
                 {cartItems.reduce((total: any, cartItem: any) => {
                   return total + cartItem.quantity;
                 }, 0)}
@@ -59,7 +68,7 @@ export default function Navbar() {
                 src={BagIcon}
                 className={styles.cartItemsIcon}
                 alt="logo"
-                onClick={() => openCart()}
+                onClick={switchBar}
               />
             </>
           )}
