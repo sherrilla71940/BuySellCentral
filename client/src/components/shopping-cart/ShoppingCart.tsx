@@ -36,6 +36,10 @@ export default function ShoppingCart() {
 
   // console.log("outside of effect and if", shouldReRender);
   useEffect(() => {
+    emptyCart();
+  }, []);
+
+  useEffect(() => {
     if (id) {
       // console.log("in use effect ", shouldReRender);
       console.log(id);
@@ -43,6 +47,7 @@ export default function ShoppingCart() {
         try {
           // id = userStore((state) => state.id);
           // console.log(id);
+          console.log("id change!!");
           const shoppingCartProducts = await getShoppingCartProducts(id);
           // console.log('shoppingCartProducts: ', shoppingCartProducts)
           if (Array.isArray(shoppingCartProducts)) {
