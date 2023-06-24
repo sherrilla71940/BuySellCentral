@@ -2,7 +2,7 @@
 
 ## What e-commerce-app does
 
-The e-commerce app is designed to facilitate buying and selling of products for registered users. It provides features such as user registration, login, logout, persistent shopping carts, accurate stock management from checkout, and automatic removal of products with zero quantity from the marketplace, etc.
+The e-commerce app is designed to streamline the process of buying and selling products. It offers a range of features such as user registration, login, and logout functionality. Additionally, the app ensures that users' shopping carts persist across login and logout sessions, allowing them to easily resume their shopping experience. The app also implements effective stock management during the checkout process and automatically removes products with zero quantity from the marketplace, ensuring accurate inventory representation.
 
 ## Future Improvements
 
