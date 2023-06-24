@@ -50,10 +50,10 @@ There are several areas that require attention for future development. Here are 
 
 The first thing you will need to do is `npm i` in the root, client, and server directories.
 
-Next you would need to create a .env file in your server directory and add a port number to run your backend server, like so: `PORT=3000`.
+Next, you would need to create a .env file in your server directory and add a port number to run your backend server, like so: `PORT=3000`.
 
 ## Start the app
 
 To start your backend API, go to the **server** directory and run `npm run serve` in the terminal.
 
-To start your Vite server and serve your frontend assets go to the **client** directory and run **npm run dev** in the terminal.
+To start your Vite server to serve your frontend assets go to the **client** directory and run `npm run dev` in the terminal.
