@@ -8,6 +8,8 @@ import { menuStore } from "../../zustand/menuStore";
 import { userStore } from "./../../zustand/UserStore";
 
 import { signOutUser } from "../../firebaseAuth/authentication";
+
+import { useCartSlice } from "../../zustand/ShoppingCartSlice";
 // const store = userStore();
 
 // function closeMenu(setter: any) {
@@ -16,6 +18,8 @@ import { signOutUser } from "../../firebaseAuth/authentication";
 
 export default function Menu() {
   const navigate = useNavigate();
+
+  const closeCart = useCartSlice((state) => state.closeCart);
 
   const {
     id,
@@ -49,6 +53,7 @@ export default function Menu() {
     await signOutUser();
     localStorage.clear();
     setVisibility(false);
+    closeCart();
     // loggedIn: false,
     // id:'',
     // username: '',
