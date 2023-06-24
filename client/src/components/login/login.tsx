@@ -91,7 +91,7 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <Tabs.Root defaultValue="tab1">
+      <Tabs.Root defaultValue="tab2">
         <Tabs.List aria-label="Manage your account">
           <Tabs.Trigger className={styles.tabs} value="tab2">
             Login
