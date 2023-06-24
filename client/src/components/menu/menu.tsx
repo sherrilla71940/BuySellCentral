@@ -10,6 +10,10 @@ import { userStore } from "./../../zustand/UserStore";
 import { signOutUser } from "../../firebaseAuth/authentication";
 // const store = userStore();
 
+// function closeMenu(setter: any) {
+//   setter(false);
+// }
+
 export default function Menu() {
   const navigate = useNavigate();
 
@@ -44,6 +48,7 @@ export default function Menu() {
   async function logOut() {
     await signOutUser();
     localStorage.clear();
+    setVisibility(false);
     // loggedIn: false,
     // id:'',
     // username: '',

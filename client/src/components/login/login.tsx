@@ -177,7 +177,7 @@ export default function Login() {
             </fieldset>
             <div>
               <button className={styles.button} onClick={login}>
-                login
+                log In
               </button>
             </div>
           </form>
