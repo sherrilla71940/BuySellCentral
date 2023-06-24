@@ -17,7 +17,7 @@ import { useRef } from "react";
 
 export default function ShoppingCart() {
   const { shouldReRender, setRerender } = renderProductsStore();
-  const removeProduct = useProductsSlice((state) => state.removeProduct);
+  // const removeProduct = useProductsSlice((state) => state.removeProduct);
   // const { shouldReRender, setRerender } = renderCartStore();
   const id = userStore((state) => state.id);
   // let id;
@@ -133,7 +133,7 @@ export default function ShoppingCart() {
       emptyCart();
       closeCart();
       navigate("/");
-      location.reload();
+      // location.reload();
       // });
     }
   }

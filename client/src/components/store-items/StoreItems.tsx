@@ -2,7 +2,7 @@
 // import { Product } from '../../models/models'
 import styles from "./StoreItems.module.css";
 import Item from "../../components/Item/Item";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useProductsSlice } from "../../zustand/ProductSlice";
 import { getStoreProducts } from "../../services/store-products-service";
 import { ProductType } from "../../../../global-types/product";
@@ -12,7 +12,13 @@ export default function StoreItems() {
   const { shouldReRender, setRerender } = renderProductsStore();
   const storeItems = useProductsSlice((state) => state.storeItems);
   const addProduct = useProductsSlice((state) => state.addProduct);
-  const removeProduct = useProductsSlice((state) => state.removeProduct);
+  const checkRemoveProduct = useProductsSlice(
+    (state) => state.checkRemoveProduct
+  );
+  // const removeProduct = useProductsSlice((state) => state.removeProduct);
+  const isLoading = storeItems.length === 0;
+
+  const [fetchedProducts, setFetchedProducts] = useState([]);
 
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
@@ -20,11 +26,20 @@ export default function StoreItems() {
     const fetchAllStoreProducts = async () => {
       try {
         const storeProducts = await getStoreProducts();
+        // setFetchedProducts(storeProducts);
+        checkRemoveProduct(storeProducts);
 
         storeProducts.forEach((product: ProductType) => {
           // removeProduct(product.id);
           addProduct(product);
+          // removeProduct(product.id);
+          console.log("product quantity is", product.quantity);
         });
+
+        // checkRemoveProduct(storeProducts);
+
+        console.log("storeProducts", storeProducts);
+        console.log("storeItems", storeItems);
         console.log("24: ", storeItems);
       } catch (error) {
         console.log(error);
@@ -35,6 +50,15 @@ export default function StoreItems() {
     console.log("store:", storeItems);
     console.log(shouldReRender);
   }, [shouldReRender]);
+
+  useEffect(() => {
+    console.log("storeItems", storeItems);
+    console.log("store:", storeItems);
+  }, [storeItems]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className={styles.storeItems}>

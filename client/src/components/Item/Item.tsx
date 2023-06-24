@@ -17,7 +17,7 @@ export default function Item({ product }: Props) {
 
   return (
     <div>
-      {product.quantity > 0 && (
+      {product.quantity && (
         <div
           className={styles.storeItem}
           onClick={() => navigate(`/${product.id}`)}
