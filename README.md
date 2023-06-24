@@ -16,17 +16,35 @@ There are several areas that require attention for future development. Here are 
 
 ![Home Page](/app%20screenshots/Screenshot%202023-06-18%20at%206.46.13%20PM.png)
 
+#### Home Page
+
 ![Login Page](/app%20screenshots/Screenshot%202023-06-18%20at%206.46.53%20PM.png)
+
+#### Login Page
+
+![Registration Page](/app%20screenshots/Screenshot%202023-06-24%20at%205.39.46%20PM.png)
+
+#### Registration Page
 
 ![Product Details Page](<app screenshots/Screenshot 2023-06-18 at 7.42.22 PM.png>)
 
+#### Product Details Page
+
 ![Shopping Cart](/app%20screenshots/Screenshot%202023-06-18%20at%206.47.10%20PM.png)
 
-![Nav Bar](/app%20screenshots/Screenshot%202023-06-18%20at%206.47.37%20PM.png)
+#### Shopping Cart Page
+
+![Navbar](/app%20screenshots/Screenshot%202023-06-18%20at%206.47.37%20PM.png)
+
+#### Navbar
 
 ![List Product Page](/app%20screenshots/Screenshot%202023-06-18%20at%206.47.56%20PM.png)
 
+#### List Product Page
+
 ![User Store](/app%20screenshots/Screenshot%202023-06-18%20at%206.48.08%20PM.png)
+
+#### User Store Page
 
 ## Set up
 
