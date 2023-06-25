@@ -10,6 +10,7 @@ import { useProductsSlice } from "../../zustand/ProductSlice";
 import { userStore } from "../../zustand/UserStore";
 import { menuStore } from "../../zustand/menuStore";
 import { ShoppingCartProductType } from "../../../../global-types/shopping-cart-product";
+// import { useCartSlice } from '../../zustand/ShoppingCartSlice';
 
 export default function ItemDetails() {
   const { id } = userStore();
@@ -17,6 +18,7 @@ export default function ItemDetails() {
   const storeItems = useProductsSlice((state) => state.storeItems);
   const addItem = useCartSlice((state) => state.addItem);
   const openCart = useCartSlice((state) => state.openCart);
+  const cartItems = useCartSlice((state) => state.cartItems);
 
   // useEffect(() => {
   //   // setVisibility(false)
@@ -92,6 +94,10 @@ export default function ItemDetails() {
           className={styles.addToCart}
           onClick={async () => {
             if (product) {
+              const prodInCart = cartItems.findIndex(
+                (prod) => prod.productId === product?.id
+              );
+              if (prodInCart !== -1) return;
               const newCartItem: ShoppingCartProductType =
                 await addToShoppingCart({
                   userId: id,
