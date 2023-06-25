@@ -24,8 +24,13 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
 
     addItem: (newItem) =>
       set((state) => {
+        console.log("newitem", newItem);
         // if there is no such item in the cart yet
-        if (state.cartItems.find((item) => item.id === newItem.id) == null) {
+        if (
+          state.cartItems.find(
+            (item) => item.productId === newItem.productId
+          ) == undefined
+        ) {
           return {
             cartItems: [...state.cartItems, { ...newItem, quantity: 1 }],
           };

@@ -51,10 +51,12 @@ export default function CartItem({
     switch (action) {
       case "increase":
         increaseQuantity(cartItem);
+        // make async req to backend API here if I can await
         break;
       case "decrease":
         decreaseQuantity(cartItem);
         break;
+      // same here
     }
     console.log("after switch", cartItem);
   }
