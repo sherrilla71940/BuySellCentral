@@ -39,10 +39,17 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
         const newState = state.cartItems.map((item) => {
           // if the item does exist in the cart
           if (existingItem.productQuantity && item.id === existingItem?.id) {
-            return {
+            // console.log("increase quantity", {
+            //   ...existingItem,
+            //   quantity: existingItem.productQuantity + 1,
+            // });
+            existingItem.productQuantity++;
+            const productToCheckOut = {
               ...existingItem,
-              quantity: existingItem.productQuantity + 1,
+              quantity: existingItem.productQuantity,
             };
+            console.log(productToCheckOut);
+            return productToCheckOut;
           } else {
             return item;
           }
