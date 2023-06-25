@@ -8,8 +8,8 @@
   max-width: 600px;
   height: calc(100vh - 65px);
   padding: 20px;
-  border-left: 1px solid #118259;
-  background-color: #EEEEEE;
+  border: 0.5px solid #118259;
+  background-color: #eeeeee;
 }
 
 .menuItem {
@@ -26,7 +26,7 @@
   color: #118259;
 }
 
-.container>ul {
+.container > ul {
   list-style-type: none;
   padding: 0;
   width: inherit;
@@ -35,16 +35,15 @@
   overflow: scroll;
 }
 
-.container>ul>li {
+.container > ul > li {
   padding: 0;
   border-radius: 4px;
 
   margin-bottom: 10px;
   /* box-sizing: border-box; */
 
-  background-color: #C4DDD4;
+  background-color: #c4ddd4;
 }
-
 
 /* .total {
   box-sizing: border-box;
@@ -73,19 +72,18 @@
   cursor: pointer;
 } */
 
-.text{
-    /* font-family: 'Red Hat Display'; */
-    font-style: normal;
-    font-weight: 500;
-    /* font-size: 18px; */
-    line-height: 16px;
-    display: flex;
-    align-items: center;
-    text-transform: uppercase;
-    color: #118259;
-    padding-left: 30px;
-    cursor: pointer;
-
+.text {
+  /* font-family: 'Red Hat Display'; */
+  font-style: normal;
+  font-weight: 500;
+  /* font-size: 18px; */
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  color: #118259;
+  padding-left: 30px;
+  cursor: pointer;
 }
 
 .options {

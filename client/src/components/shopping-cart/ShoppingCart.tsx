@@ -15,6 +15,13 @@ import { useProductsSlice } from "../../zustand/ProductSlice";
 
 import { useRef } from "react";
 
+// function scrollToBottom(elementClassName: string) {
+//   const divElement = document.querySelector(`.${elementClassName}`);
+//   if (divElement) {
+//     divElement.scrollTop = divElement.scrollHeight;
+//   }
+// }
+
 export default function ShoppingCart() {
   const { shouldReRender, setRerender } = renderProductsStore();
   // const removeProduct = useProductsSlice((state) => state.removeProduct);
@@ -53,6 +60,7 @@ export default function ShoppingCart() {
           if (Array.isArray(shoppingCartProducts)) {
             shoppingCartProducts.forEach((product: ShoppingCartProductType) => {
               addItem(product);
+              // scrollToBottom("_container_sbzq6_1");
               // setRerender(!shouldReRender);
             });
             console.log(cartItems);
