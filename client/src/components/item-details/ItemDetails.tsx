@@ -21,7 +21,7 @@ export default function ItemDetails() {
   const openCart = useCartSlice((state) => state.openCart);
   const cartItems = useCartSlice((state) => state.cartItems);
 
-  // const { shouldReRender, setRerender } = renderProductsStore();
+  const { shouldReRender, setRerender } = renderProductsStore();
 
   // useEffect(() => {
   //   // setVisibility(false)
@@ -114,7 +114,7 @@ export default function ItemDetails() {
               console.log("-->", newCartItem);
               if (newCartItem.productQuantity) {
                 addItem(newCartItem);
-                // setRerender(!shouldReRender);
+                setRerender(!shouldReRender);
                 setVisibility(false);
                 openCart();
               }
