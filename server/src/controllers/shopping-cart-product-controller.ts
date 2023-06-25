@@ -350,3 +350,10 @@ export async function deleteEntireShoppingCart(req: Request, res: Response) {
     res.json("ran into error");
   }
 }
+
+// export async function updateProductQuantityInCart(
+//   req: Request,
+//   res: Response
+// ) {
+
+// }

@@ -26,13 +26,13 @@ export default function CartItem({
   useEffect(() => {
     const fetchShoppingCartProduct = async () => {
       try {
-        const shoppingCartProducts = await getShoppingCartProduct(
+        const shoppingCartProduct = await getShoppingCartProduct(
           cartItem.productId
         );
         // console.log('shoppingCartProducts: ', shoppingCartProducts)
 
-        if (shoppingCartProducts.name) {
-          setFetchedItem(shoppingCartProducts);
+        if (shoppingCartProduct.name) {
+          setFetchedItem(shoppingCartProduct);
           // console.log('PRODUCT SC: ', shoppingCartProducts)
         }
       } catch (error) {
@@ -43,11 +43,32 @@ export default function CartItem({
     fetchShoppingCartProduct();
   }, []);
 
+  function updateQuantityStateAndInBackend(
+    action: "increase" | "decrease",
+    cartItem: ShoppingCartProductType
+  ) {
+    console.log("before switch", cartItem);
+    switch (action) {
+      case "increase":
+        increaseQuantity(cartItem);
+        break;
+      case "decrease":
+        decreaseQuantity(cartItem);
+        break;
+    }
+    console.log("after switch", cartItem);
+  }
+  // useEffect(() => console.log(fetchedItem), [fetchedItem]);
+
   // console.log('CART ITEM: ', cartItem)
-console.log(fetchedItem?.pictureUrl)
+  console.log(fetchedItem?.pictureUrl);
   return (
     <div className={styles.container}>
-      <img className={styles.img} src={fetchedItem?.pictureUrl} alt='small product image'/>
+      <img
+        className={styles.img}
+        src={fetchedItem?.pictureUrl}
+        alt="small product image"
+      />
       <div className={styles.itemInfo}>
         <div className={styles.left}>
           <p className={styles.name}>{fetchedItem?.name}</p>
@@ -58,14 +79,18 @@ console.log(fetchedItem?.pictureUrl)
         <div className={styles.right}>
           <p
             className={styles.decrease}
-            onClick={() => decreaseQuantity(cartItem)}
+            onClick={() =>
+              updateQuantityStateAndInBackend("decrease", cartItem)
+            }
           >
             -
           </p>
           <p className={styles.size}>{cartItem?.productQuantity}</p>
           <p
             className={styles.increase}
-            onClick={() => increaseQuantity(cartItem)}
+            onClick={() =>
+              updateQuantityStateAndInBackend("increase", cartItem)
+            }
           >
             +
           </p>
