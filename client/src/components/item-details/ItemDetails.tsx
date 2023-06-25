@@ -11,6 +11,7 @@ import { userStore } from "../../zustand/UserStore";
 import { menuStore } from "../../zustand/menuStore";
 import { ShoppingCartProductType } from "../../../../global-types/shopping-cart-product";
 // import { useCartSlice } from '../../zustand/ShoppingCartSlice';
+import { renderProductsStore } from "../../zustand/should-refetch-slice";
 
 export default function ItemDetails() {
   const { id } = userStore();
@@ -19,6 +20,8 @@ export default function ItemDetails() {
   const addItem = useCartSlice((state) => state.addItem);
   const openCart = useCartSlice((state) => state.openCart);
   const cartItems = useCartSlice((state) => state.cartItems);
+
+  const { shouldReRender, setRerender } = renderProductsStore();
 
   // useEffect(() => {
   //   // setVisibility(false)
@@ -111,6 +114,7 @@ export default function ItemDetails() {
               console.log("-->", newCartItem);
               if (newCartItem.productQuantity) {
                 addItem(newCartItem);
+                setRerender(!shouldReRender);
                 setVisibility(false);
                 openCart();
               }
