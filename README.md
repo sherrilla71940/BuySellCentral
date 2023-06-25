@@ -11,6 +11,7 @@ There are several areas that require attention for future development. Here are 
 - **Integration of Transaction Records:** The backend API currently maintains transaction records, but this functionality needs to be integrated into the frontend. This will enable users to view their transaction history and provide better transparency.
 - **Real Transactions with Stripe:** Currently, the checkout process does not involve real transactions. To enable users to make actual payments and receive payments, integration with a payment gateway like Stripe will be used. This will enhance the app's functionality and make it a fully functional e-commerce platform.
 - **UI Improvement** Not much time was spent on the UI design and responsiveness, but this shouldn't take long.
+- **Enable Users to Update and Delete Listed Products** Like transactions, this is already set up in the backend and simply needs to be integrated with the frontend.
 
 ## A quick glimpse into the app's UI
 
