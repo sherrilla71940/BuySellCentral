@@ -80,3 +80,28 @@ export async function getShoppingCartProduct(pid: number) {
     console.error(error);
   }
 }
+
+export async function updateCartProductQuantityService(body: {
+  userId: string;
+  productId: number;
+  action: string;
+}) {
+  console.log("update prod quantity service being called");
+  try {
+    const response = await fetch("http://localhost:3003/shoppingcartproduct", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      // console.log(data)
+      return data;
+    } else {
+      throw new Error("Failed to update product quantity");
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}

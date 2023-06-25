@@ -8,6 +8,11 @@ import {
 import { useEffect, useState } from "react";
 import { ProductType } from "../../../../global-types/product";
 import { ShoppingCartProductType } from "../../../../global-types/shopping-cart-product";
+import {
+  getShoppingCartProducts,
+  updateCartProductQuantityService,
+} from "../../services/shopping-cart-service";
+// import { useState } from 'react';
 
 export default function CartItem({
   cartItem,
@@ -43,7 +48,7 @@ export default function CartItem({
     fetchShoppingCartProduct();
   }, []);
 
-  function updateQuantityStateAndInBackend(
+  async function updateQuantityStateAndInBackend(
     action: "increase" | "decrease",
     cartItem: ShoppingCartProductType
   ) {
@@ -51,14 +56,26 @@ export default function CartItem({
     switch (action) {
       case "increase":
         increaseQuantity(cartItem);
+        await updateCartProductQuantityService({
+          userId: id,
+          productId: cartItem.productId,
+          action: "increase",
+        });
         // make async req to backend API here if I can await
         break;
       case "decrease":
         decreaseQuantity(cartItem);
+        await updateCartProductQuantityService({
+          userId: id,
+          productId: cartItem.productId,
+          action: "decrease",
+        });
         break;
       // same here
     }
     console.log("after switch", cartItem);
+    const products = await getShoppingCartProducts(id);
+    console.log("fetch after switch", products);
   }
   // useEffect(() => console.log(fetchedItem), [fetchedItem]);
 

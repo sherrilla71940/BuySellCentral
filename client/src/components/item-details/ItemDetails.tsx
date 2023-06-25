@@ -97,7 +97,10 @@ export default function ItemDetails() {
               const prodInCart = cartItems.findIndex(
                 (prod) => prod.productId === product?.id
               );
-              if (prodInCart !== -1) return;
+              if (prodInCart !== -1) {
+                alert("Already in cart");
+                return;
+              }
               const newCartItem: ShoppingCartProductType =
                 await addToShoppingCart({
                   userId: id,

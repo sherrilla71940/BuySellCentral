@@ -357,3 +357,46 @@ export async function deleteEntireShoppingCart(req: Request, res: Response) {
 // ) {
 
 // }
+
+// router.put('/shoppingcartproduct/:uid/:pid', updateCartProductQuantity)
+// above endpoint to update product quantity when +/- quantity of product in cart
+
+export async function updateCartProductQuantity(req: Request, res: Response) {
+  try {
+    console.log("update controller called");
+    const existingShoppingCart = await ShoppingCart.findOne({
+      where: {
+        userId: req.body.userId, // here comes userID
+      },
+    });
+
+    const shoppingCartId = existingShoppingCart?.id;
+    if (shoppingCartId) {
+      const foundProduct = await ShoppingCartProduct.findOne({
+        where: {
+          shoppingCartId, // id from shoppping cart
+          productId: req.body.productId,
+        },
+      });
+      if (foundProduct) {
+        if (req.body.action === "increase") {
+          foundProduct.productQuantity += 1;
+          await foundProduct.save();
+          res.status(200);
+          res.json("updated quantity!");
+        } else if (req.body.action === "decrease") {
+          foundProduct.productQuantity -= 1;
+          await foundProduct.save();
+          res.status(200);
+          res.json("updated quantity!");
+        }
+      }
+    }
+    //  const productInCart = await Prod
+  } catch (error) {
+    // send a response
+    console.log(error);
+    res.status(400);
+    res.json("ran into error");
+  }
+}

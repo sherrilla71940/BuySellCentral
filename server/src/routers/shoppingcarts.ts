@@ -11,6 +11,7 @@ import {
   getAllShoppingCarts,
   productFinder,
   deleteEntireShoppingCart,
+  updateCartProductQuantity,
 } from "../controllers/shopping-cart-product-controller";
 //import controllers
 
@@ -42,4 +43,7 @@ export default function shoppingCartsRouter(router: express.Router) {
   // Get one Product
   // router.post("/shoppingcartproduct", productFinder);
   router.get("/shoppingcartproduct/:pid", productFinder);
+
+  router.put("/shoppingcartproduct", updateCartProductQuantity);
+  // above endpoint to update product quantity when +/- quantity of product in cart
 }
