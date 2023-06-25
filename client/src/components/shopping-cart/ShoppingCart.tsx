@@ -53,6 +53,7 @@ export default function ShoppingCart() {
           if (Array.isArray(shoppingCartProducts)) {
             shoppingCartProducts.forEach((product: ShoppingCartProductType) => {
               addItem(product);
+              // setRerender(!shouldReRender);
             });
             console.log(cartItems);
             console.log(shoppingCartProducts);
