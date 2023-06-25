@@ -19,6 +19,7 @@ export default function StoreItems() {
   const isLoading = storeItems.length === 0;
 
   const [fetchedProducts, setFetchedProducts] = useState([]);
+  const [sortedStoreItems, setSortedStoreItems] = useState([...storeItems]);
 
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
@@ -54,6 +55,9 @@ export default function StoreItems() {
   useEffect(() => {
     console.log("storeItems", storeItems);
     console.log("store:", storeItems);
+    setSortedStoreItems(
+      [...storeItems].sort((a, b) => b.quantity - a.quantity)
+    );
   }, [storeItems]);
 
   if (isLoading) {
@@ -62,7 +66,7 @@ export default function StoreItems() {
 
   return (
     <div className={styles.storeItems}>
-      {storeItems.map(
+      {sortedStoreItems.map(
         (product: ProductType) =>
           product.quantity >= 1 && <Item key={product.id} product={product} />
       )}
