@@ -33,3 +33,21 @@ export async function getSpecificProduct(pid: string) {
     console.error(error);
   }
 }
+
+export async function getSpecificUser(uid: string, setter: any) {
+  try {
+    const response = await fetch(`http://localhost:3003/user/${uid}`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    });
+    // console.log('RESPONSE: ', response)
+    if (response.ok) {
+      const user = await response.json();
+      // console.log('DATA: ', data)
+      console.log("getting user is", user);
+      setter(user.name);
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
