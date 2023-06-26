@@ -8,6 +8,7 @@ export async function getStoreProducts() {
     if (response.ok) {
       const data = await response.json();
       // console.log('DATA: ', data)
+      console.log("sellersData", data);
       return data;
     }
   } catch (error) {

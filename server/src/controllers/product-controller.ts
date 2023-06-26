@@ -1,6 +1,7 @@
 import { Product as ProductModel, User as UserModel } from "../models/models";
 import { Request, Response } from "express";
 import { Op } from "sequelize";
+import { User } from "../models/models";
 
 // export async function getAllProducts(
 //   req: Request,
@@ -114,9 +115,38 @@ export async function getListedAndInStockProducts(
         ],
       },
     });
-    // const products = await ProductModel.findAll();
+    // const realProducts = products.map((prod) => prod.dataValues);
+    // const productsWithSellerNames = await Promise.all(
+    //   realProducts.map(async (product) => {
+    //     const seller = await User.findOne({
+    //       where: {
+    //         id: {
+    //           [Op.and]: product.sellerId,
+    //         },
+    //       },
+    //     });
+    //     return { ...product, sellerId: seller.id };
+    //   })
+    // );
+    const realProducts = products.map((prod) => prod.toJSON());
+    const productsWithSellerIds = await Promise.all(
+      realProducts.map(async (product) => {
+        const seller = await User.findOne({
+          where: {
+            id: product.sellerId,
+          },
+        });
+        return { ...product, sellerName: seller.name };
+      })
+    );
+    console.log(productsWithSellerIds);
+
+    // console.log(productsWithSellerNames);
+    // console.log("hello");
+    // console.log("1st product", products[0].dataValues, "end of first product");
     res.status(200);
-    res.json(products);
+    // res.json(products);
+    // res.json(productsWithSellerNames);
   } catch (e: unknown) {
     if (e instanceof Error) {
       console.log(e.message);
