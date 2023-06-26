@@ -13,6 +13,7 @@ import { ShoppingCartProductType } from "../../../../global-types/shopping-cart-
 // import { useCartSlice } from '../../zustand/ShoppingCartSlice';
 import { renderProductsStore } from "../../zustand/should-refetch-slice";
 import { ProductType } from "../../../../global-types/product";
+import { getSpecificProduct } from "../../services/store-products-service";
 
 export default function ItemDetails() {
   const { id } = userStore();
@@ -33,16 +34,33 @@ export default function ItemDetails() {
   // const product: Product[] = data.products[0];
 
   const param = useParams();
+  console.log("product id from params", param.id);
   // let product = storeItems.find((item) => String(item.id) === param.id);
   // console.log(product, "product");
   console.log(id);
   const [product, setProduct] = useState<ProductType>({} as ProductType);
+  // const param = useParams();
 
   useEffect(() => {
-    let newProduct = storeItems.find((item) => String(item.id) === param.id);
-    setProduct(newProduct as ProductType);
-    console.log("product is", product);
-  });
+    // let newProduct = storeItems.find((item) => String(item.id) === param.id);
+    console.log("getting useEffect");
+    async function getProduct(): Promise<any> {
+      async function inner() {
+        const paramId = param.id;
+        // return product;
+        if (paramId) {
+          const productToLoad = await getSpecificProduct(paramId);
+          console.log("getting param id", paramId);
+          // const productToLoad = await getProduct(paramId);
+          setProduct(productToLoad);
+        }
+      }
+      await inner();
+    }
+    getProduct();
+    // setProduct(newProduct as ProductType);
+    // console.log("product is", product);
+  }, []);
 
   // handle size selection
   const handleSizeSelection = (e: React.SyntheticEvent) => {
