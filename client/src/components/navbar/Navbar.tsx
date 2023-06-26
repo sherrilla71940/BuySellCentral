@@ -19,7 +19,7 @@ export default function Navbar() {
   const cartItems = useCartSlice((state) => state.cartItems);
 
   const { loggedIn, username, email, setUsername } = userStore();
-  const { shouldReRender, setRerender } = renderProductsStore();
+  // const { shouldReRender, setRerender } = renderProductsStore();
   const { visible, setVisibility } = menuStore();
 
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -45,7 +45,7 @@ export default function Navbar() {
   }
 
   // const { loggedIn } = userStore();
-  const { setLoggedIn, setID } = userStore();
+  const { setLoggedIn, setID, id } = userStore();
   // console.log(loggedIn)
 
   useEffect(() => {
@@ -61,7 +61,7 @@ export default function Navbar() {
       console.log("inside use effect");
     }
     fetchUserName();
-  }, []);
+  }, [id]);
 
   return (
     <nav className={styles.navbarContainerSticky}>
@@ -99,7 +99,7 @@ export default function Navbar() {
                 onClick={clickAvatar}
               />
               {/* <span>{localStorage.getItem("email")}</span> */}
-              <span>username is {username}</span>
+              <span>Welcome back, {username}</span>
             </div>
           ) : (
             <button className={styles.button} onClick={redirect}>
