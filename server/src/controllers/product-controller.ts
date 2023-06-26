@@ -129,7 +129,7 @@ export async function getListedAndInStockProducts(
     //   })
     // );
     const realProducts = products.map((prod) => prod.toJSON());
-    const productsWithSellerIds = await Promise.all(
+    const productsWithSellerNames = await Promise.all(
       realProducts.map(async (product) => {
         const seller = await User.findOne({
           where: {
@@ -139,14 +139,14 @@ export async function getListedAndInStockProducts(
         return { ...product, sellerName: seller.name };
       })
     );
-    console.log(productsWithSellerIds);
+    console.log(productsWithSellerNames);
 
     // console.log(productsWithSellerNames);
     // console.log("hello");
     // console.log("1st product", products[0].dataValues, "end of first product");
     res.status(200);
     // res.json(products);
-    // res.json(productsWithSellerNames);
+    res.json(productsWithSellerNames);
   } catch (e: unknown) {
     if (e instanceof Error) {
       console.log(e.message);
@@ -167,8 +167,19 @@ export async function getProduct(req: Request, res: Response): Promise<void> {
       },
     });
     if (product) {
+      const seller = await User.findOne({
+        where: {
+          id: product.sellerId,
+        },
+      });
+      const sellerName = seller.name;
+      // product.sellerName = sellerName;
+      const productCopy: any = { ...product }.dataValues;
+      productCopy.sellerName = sellerName;
+      console.log(productCopy);
       res.status(200);
-      res.json(product);
+      res.json(productCopy);
+      // res.json(product);
     } else {
       res.status(404);
       res.json(`product ${req.params.id} not found`);
