@@ -50,6 +50,9 @@ export async function loginUser(email: string, password: string) {
     const userToken = await user.getIdToken();
     // console.log("token", user);
     localStorage.setItem("user", userToken);
+    console.log("user is", user);
+    // localStorage.setItem("username", userToken.)
+    console.log("login user func token", userToken);
     return { id: user.uid, loggedIn: true };
   } catch (e) {
     console.log(e);

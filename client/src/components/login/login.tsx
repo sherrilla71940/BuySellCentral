@@ -46,6 +46,7 @@ export default function Login() {
     // console.log(user.userToken);
     setID(user.id);
     localStorage.setItem("id", user.id);
+    // localStorage.setItem("username", user.)
     setLoggedIn(user.loggedIn);
     localStorage.setItem("loggedIn", user.loggedIn.toString());
     if (user.loggedIn === true) {

@@ -6,7 +6,7 @@ import { userStore } from "./../../zustand/UserStore";
 import { menuStore } from "../../zustand/menuStore";
 import firebase from "firebase/compat/app";
 // import logo from './../../assets/logo.png'
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 // import { useCartSlice } from './../../zustand/ShoppingCartSlice';
 
 export default function Navbar() {
@@ -18,6 +18,13 @@ export default function Navbar() {
 
   const { loggedIn, username, email } = userStore();
   const { visible, setVisibility } = menuStore();
+
+  const [loggedInUser, setLoggedInUser] = useState("");
+
+  // useEffect(() => {
+  //   localStorage.getItem("");
+  //   console.log("username", username);
+  // });
 
   function redirect() {
     navigate("/login");
@@ -73,12 +80,15 @@ export default function Navbar() {
             </>
           )}
           {loggedIn ? (
-            <img
-              src="https://source.boringavatars.com/"
-              className={styles.userThumbnail}
-              alt="user pic"
-              onClick={clickAvatar}
-            />
+            <div>
+              <img
+                src="https://source.boringavatars.com/"
+                className={styles.userThumbnail}
+                alt="user pic"
+                onClick={clickAvatar}
+              />
+              <span>{localStorage.getItem("email")}</span>
+            </div>
           ) : (
             <button className={styles.button} onClick={redirect}>
               Sign In
