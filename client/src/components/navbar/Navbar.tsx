@@ -60,7 +60,7 @@ export default function Navbar() {
             <>
               <div className={styles.cartItems} onClick={switchBar}>
                 {cartItems.reduce((total: any, cartItem: any) => {
-                  return total + cartItem.quantity;
+                  return total + cartItem.productQuantity;
                 }, 0)}
               </div>
 
