@@ -91,7 +91,7 @@ export default function Navbar() {
             </>
           )}
           {loggedIn ? (
-            <div>
+            <div className={styles.avatarAndName}>
               <img
                 src="https://source.boringavatars.com/"
                 className={styles.userThumbnail}
@@ -99,7 +99,7 @@ export default function Navbar() {
                 onClick={clickAvatar}
               />
               {/* <span>{localStorage.getItem("email")}</span> */}
-              <span>Welcome back, {username}</span>
+              <h4 className={styles.username}>Welcome back, {username}</h4>
             </div>
           ) : (
             <button className={styles.button} onClick={redirect}>
