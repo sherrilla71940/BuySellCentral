@@ -7,7 +7,9 @@ import { menuStore } from "../../zustand/menuStore";
 import firebase from "firebase/compat/app";
 // import logo from './../../assets/logo.png'
 import { useEffect, useState } from "react";
+import { getSpecificUser } from "../../services/store-products-service";
 // import { useCartSlice } from './../../zustand/ShoppingCartSlice';
+import { renderProductsStore } from "../../zustand/should-refetch-slice";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -16,7 +18,8 @@ export default function Navbar() {
   const closeCart = useCartSlice((state) => state.closeCart);
   const cartItems = useCartSlice((state) => state.cartItems);
 
-  const { loggedIn, username, email } = userStore();
+  const { loggedIn, username, email, setUsername } = userStore();
+  const { shouldReRender, setRerender } = renderProductsStore();
   const { visible, setVisibility } = menuStore();
 
   const [loggedInUser, setLoggedInUser] = useState("");
@@ -50,6 +53,14 @@ export default function Navbar() {
       setLoggedIn(true);
       console.log(localStorage.getItem("user"));
     }
+
+    console.log("username is", username);
+    async function fetchUserName() {
+      console.log("inside async");
+      await getSpecificUser(localStorage.getItem("id") as string, setUsername);
+      console.log("inside use effect");
+    }
+    fetchUserName();
   }, []);
 
   return (
@@ -87,7 +98,8 @@ export default function Navbar() {
                 alt="user pic"
                 onClick={clickAvatar}
               />
-              <span>{localStorage.getItem("email")}</span>
+              {/* <span>{localStorage.getItem("email")}</span> */}
+              <span>username is {username}</span>
             </div>
           ) : (
             <button className={styles.button} onClick={redirect}>
