@@ -12,8 +12,7 @@
   height: 60vh;
 
   color: #118259;
-  background-color: #EEEEEE;
-
+  background-color: #eeeeee;
 }
 
 .left,
@@ -60,8 +59,10 @@
   background-color: #C4DDD4;
 } */
 
-.name, .price {
+.name,
+.price {
   margin-top: 15px;
+  font-size: large;
 }
 
 .sizes,
@@ -85,7 +86,7 @@
   height: 70px;
   width: 20%;
 
-  background-color: #C4DDD4;
+  background-color: #c4ddd4;
   border-radius: 4px;
 
   cursor: pointer;
@@ -108,7 +109,7 @@
   border-radius: 4px;
 
   color: black;
-  background-color: #C4DDD4;
+  background-color: #c4ddd4;
 
   cursor: pointer;
 }

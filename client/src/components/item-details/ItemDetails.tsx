@@ -12,6 +12,7 @@ import { menuStore } from "../../zustand/menuStore";
 import { ShoppingCartProductType } from "../../../../global-types/shopping-cart-product";
 // import { useCartSlice } from '../../zustand/ShoppingCartSlice';
 import { renderProductsStore } from "../../zustand/should-refetch-slice";
+import { ProductType } from "../../../../global-types/product";
 
 export default function ItemDetails() {
   const { id } = userStore();
@@ -32,9 +33,16 @@ export default function ItemDetails() {
   // const product: Product[] = data.products[0];
 
   const param = useParams();
-  let product = storeItems.find((item) => String(item.id) === param.id);
-  console.log(product, "product");
+  // let product = storeItems.find((item) => String(item.id) === param.id);
+  // console.log(product, "product");
   console.log(id);
+  const [product, setProduct] = useState<ProductType>({} as ProductType);
+
+  useEffect(() => {
+    let newProduct = storeItems.find((item) => String(item.id) === param.id);
+    setProduct(newProduct as ProductType);
+    console.log("product is", product);
+  });
 
   // handle size selection
   const handleSizeSelection = (e: React.SyntheticEvent) => {
@@ -50,6 +58,8 @@ export default function ItemDetails() {
       // })
     }
   };
+
+  // useEffect(() => {}, [shouldReRender]);
 
   return (
     <div className={styles.container}>
@@ -78,7 +88,7 @@ export default function ItemDetails() {
         </h4>
         <h4 className={styles.price}>$ {product?.price} USD</h4>
 
-        <div className={styles.sizes}>
+        {/* <div className={styles.sizes}>
           <div className={styles.size} onClick={handleSizeSelection}>
             S
           </div>
@@ -91,7 +101,7 @@ export default function ItemDetails() {
           <div className={styles.size} onClick={handleSizeSelection}>
             XL
           </div>
-        </div>
+        </div> */}
 
         <div
           className={styles.addToCart}
