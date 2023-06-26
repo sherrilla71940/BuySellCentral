@@ -166,7 +166,9 @@ export default function ShoppingCart() {
           <ul>
             {cartItems.map((cartItem) => (
               <li key={cartItem.id}>
-                <CartItem cartItem={cartItem} />
+                {cartItem.productQuantity > 0 && (
+                  <CartItem cartItem={cartItem} />
+                )}
               </li>
             ))}
           </ul>
