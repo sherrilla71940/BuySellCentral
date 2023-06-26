@@ -101,17 +101,17 @@ export default function ItemDetails() {
         <h1 className={styles.name} onClick={handleSizeSelection}>
           {product?.name}
         </h1>
-        <h4 className={styles.price} onClick={handleSizeSelection}>
-          Category: {product?.category}
-        </h4>
+        <h4 className={styles.price}>$ {product?.price} USD</h4>
         <h4 className={styles.price} onClick={handleSizeSelection}>
           {product.quantity > 1
             ? `${product.quantity} products in stock`
             : `${product.quantity} product in stock`}
         </h4>
-        <h4 className={styles.price}>$ {product?.price} USD</h4>
         <h4 className={styles.price} onClick={handleSizeSelection}>
-          {product?.sellerName}
+          Category: {product?.category}
+        </h4>
+        <h4 className={styles.price} onClick={handleSizeSelection}>
+          Seller Name: {product?.sellerName}
         </h4>
 
         {/* <div className={styles.sizes}>

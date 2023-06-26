@@ -32,7 +32,7 @@ export default function Item({ product }: Props) {
               : " products in stock"}
           </p>
           <p>Category: {product.category}</p>
-          <p>{product.sellerName}</p>
+          <p>Seller Name: {product.sellerName}</p>
           <img className={styles.img} src={product.pictureUrl}></img>
         </div>
       )}
