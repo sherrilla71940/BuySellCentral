@@ -32,7 +32,7 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
           ) == undefined
         ) {
           return {
-            cartItems: [...state.cartItems, { ...newItem, quantity: 1 }],
+            cartItems: [...state.cartItems, { ...newItem, productQuantity: 1 }],
           };
         } else {
           return { cartItems: [...state.cartItems] };
@@ -48,10 +48,12 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
             //   ...existingItem,
             //   quantity: existingItem.productQuantity + 1,
             // });
+            console.log("no existing item", item);
+            console.log("existing item", existingItem);
             existingItem.productQuantity++;
             const productToCheckOut = {
               ...existingItem,
-              quantity: existingItem.productQuantity,
+              productQuantity: existingItem.productQuantity,
             };
             console.log("increase quantity", productToCheckOut);
             return productToCheckOut;
@@ -81,7 +83,8 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
               existingItem.productQuantity--;
               const productToCheckOut = {
                 ...existingItem,
-                quantity: existingItem.productQuantity,
+                productQuantity: existingItem.productQuantity,
+                // was originally quantity
               };
               console.log("decrease quantity", productToCheckOut);
               return productToCheckOut;
