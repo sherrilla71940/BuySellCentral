@@ -78,8 +78,10 @@ function App() {
                 }}
               >
                 <Navbar />
-                <ShoppingCart />
-                <Menu />
+                <div onClick={(e) => e.stopPropagation()}>
+                  <ShoppingCart />
+                  <Menu />
+                </div>
                 <StoreItems />
                 <div id="detail">{/* <Outlet /> */}</div>
               </div>
@@ -97,8 +99,10 @@ function App() {
                 }}
               >
                 <Navbar />
-                <ShoppingCart />
-                <Menu />
+                <div onClick={(e) => e.stopPropagation()}>
+                  <ShoppingCart />
+                  <Menu />
+                </div>
                 <ItemDetails />
                 <div id="detail">{/* <Outlet /> */}</div>
               </div>
@@ -116,8 +120,10 @@ function App() {
                 }}
               >
                 <Navbar />
-                <ShoppingCart />
-                <Menu />
+                <div onClick={(e) => e.stopPropagation()}>
+                  <ShoppingCart />
+                  <Menu />
+                </div>
                 <ProductForm />
               </div>
             }
@@ -134,8 +140,10 @@ function App() {
                 }}
               >
                 <Navbar />
-                <ShoppingCart />
-                <Menu />
+                <div onClick={(e) => e.stopPropagation()}>
+                  <ShoppingCart />
+                  <Menu />
+                </div>
                 <SellerStore />
               </div>
             }
