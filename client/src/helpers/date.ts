@@ -1,4 +1,4 @@
-type DateString = `${string}-${string}-${string}`;
+export type DateString = `${string}-${string}-${string}`;
 
 export function generateCurrentDateToYYYYMMDD() {
   const currentDate = new Date();
@@ -7,13 +7,13 @@ export function generateCurrentDateToYYYYMMDD() {
   const month = String(currentDate.getMonth() + 1).padStart(2, "0"); // Adding 1 since getMonth() returns zero-based month (0-11)
   const day = String(currentDate.getDate()).padStart(2, "0");
 
-  const formattedDate = `${year}-${month}-${day}`;
+  const formattedDate: DateString = `${year}-${month}-${day}`;
 
   return formattedDate;
 }
 
 export function convertCreatedAtToYYYYMMDD(dateTimeString: DateString) {
-  const formattedDate = dateTimeString.slice(0, 10);
+  const formattedDate = dateTimeString.slice(0, 10) as DateString;
   return formattedDate;
 }
 
@@ -37,4 +37,14 @@ export function getTimeDifference(
   } else {
     return `${diffDays} days ago`;
   }
+}
+
+export function generateTimeAgo(createdAt: DateString) {
+  const createdAtFormatted = convertCreatedAtToYYYYMMDD(createdAt);
+  const dateNowFormatted = generateCurrentDateToYYYYMMDD();
+  const timeAgo = getTimeDifference(
+    dateNowFormatted,
+    createdAtFormatted
+  ) as DateString;
+  return timeAgo;
 }
