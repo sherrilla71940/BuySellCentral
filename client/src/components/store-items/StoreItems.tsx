@@ -58,9 +58,6 @@ export default function StoreItems() {
     setSortedStoreItems(
       [...storeItems].sort((a, b) => b.quantity - a.quantity)
     );
-    storeItems.forEach((item) =>
-      console.log("item created at", item.createdAt)
-    );
   }, [storeItems]);
 
   if (isLoading) {

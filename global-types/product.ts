@@ -8,5 +8,4 @@ export type ProductType = {
   pictureUrl: string;
   image: string;
   sellerName?: string;
-  createdAt?: string;
 };

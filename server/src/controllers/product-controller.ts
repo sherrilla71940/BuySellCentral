@@ -146,7 +146,6 @@ export async function getListedAndInStockProducts(
     // console.log("1st product", products[0].dataValues, "end of first product");
     res.status(200);
     // res.json(products);
-    console.log(productsWithSellerNames);
     res.json(productsWithSellerNames);
   } catch (e: unknown) {
     if (e instanceof Error) {
