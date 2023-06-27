@@ -98,16 +98,18 @@ export default function CartItem({
         <div className={styles.right}>
           <p
             className={styles.decrease}
-            onClick={() =>
-              updateQuantityStateAndInBackend("decrease", cartItem)
-            }
+            onClick={(e) => {
+              e.stopPropagation();
+              updateQuantityStateAndInBackend("decrease", cartItem);
+            }}
           >
             -
           </p>
           <p className={styles.size}>{cartItem?.productQuantity}</p>
           <p
             className={styles.increase}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               console.log("q cartitem", cartItem);
               updateQuantityStateAndInBackend("increase", cartItem);
             }}
@@ -118,7 +120,8 @@ export default function CartItem({
 
         <p
           className={styles.delete}
-          onClick={() => {
+          onClick={(e) => {
+            e.stopPropagation();
             deleteProductFromShoppingCart({
               userId: id,
               productId: cartItem.productId,

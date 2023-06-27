@@ -131,7 +131,8 @@ export default function ItemDetails() {
 
         <div
           className={styles.addToCart}
-          onClick={async () => {
+          onClick={async (e) => {
+            e.stopPropagation();
             if (product) {
               const prodInCart = cartItems.findIndex(
                 (prod) => prod.productId === product?.id

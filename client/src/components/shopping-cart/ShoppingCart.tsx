@@ -158,7 +158,13 @@ export default function ShoppingCart() {
         <div className={styles.container}>
           <div className={styles.cartHeader}>
             <h1>Cart</h1>
-            <h1 className={styles.closeCart} onClick={() => closeCart()}>
+            <h1
+              className={styles.closeCart}
+              onClick={(e) => {
+                e.stopPropagation();
+                closeCart();
+              }}
+            >
               +
             </h1>
           </div>
@@ -186,7 +192,13 @@ export default function ShoppingCart() {
               </h3> */}
             </div>
 
-            <button className={styles.checkout} onClick={checkout}>
+            <button
+              className={styles.checkout}
+              onClick={(e) => {
+                e.stopPropagation();
+                checkout();
+              }}
+            >
               Checkout
             </button>
           </div>

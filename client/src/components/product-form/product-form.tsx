@@ -313,7 +313,13 @@ export default function ProductForm() {
           ></input>
         </fieldset>
         <div>
-          <button className={styles.button} onClick={addProduct}>
+          <button
+            className={styles.button}
+            onClick={(e) => {
+              e.stopPropagation();
+              addProduct(e);
+            }}
+          >
             Add product
           </button>
         </div>

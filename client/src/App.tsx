@@ -54,10 +54,16 @@ function App() {
           <Route
             path="/login"
             element={
-              <>
+              <div
+                onClick={() => {
+                  console.log("outer div clicked");
+                  closeCart();
+                  setVisibility(false);
+                }}
+              >
                 <Navbar />
                 <Login />
-              </>
+              </div>
             }
           />
 
@@ -83,37 +89,55 @@ function App() {
           <Route
             path={"/:id"}
             element={
-              <>
+              <div
+                onClick={() => {
+                  console.log("outer div clicked");
+                  closeCart();
+                  setVisibility(false);
+                }}
+              >
                 <Navbar />
                 <ShoppingCart />
                 <Menu />
                 <ItemDetails />
                 <div id="detail">{/* <Outlet /> */}</div>
-              </>
+              </div>
             }
           />
 
           <Route
             path={"/sell"}
             element={
-              <>
+              <div
+                onClick={() => {
+                  console.log("outer div clicked");
+                  closeCart();
+                  setVisibility(false);
+                }}
+              >
                 <Navbar />
                 <ShoppingCart />
                 <Menu />
                 <ProductForm />
-              </>
+              </div>
             }
           />
 
           <Route
             path={`/sellers/${id}`}
             element={
-              <>
+              <div
+                onClick={() => {
+                  console.log("outer div clicked");
+                  closeCart();
+                  setVisibility(false);
+                }}
+              >
                 <Navbar />
                 <ShoppingCart />
                 <Menu />
                 <SellerStore />
-              </>
+              </div>
             }
           />
         </Routes>
