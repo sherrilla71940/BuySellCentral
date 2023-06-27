@@ -35,8 +35,11 @@ class ShoppingCartProduct extends Model<
   @BelongsTo(() => Product)
   product: Product;
 
-  @ForeignKey(() => Product)
+  @Column
   quantity: number;
+  // @ForeignKey(() => Product)
+  // @Column
+  // quantity: number;
 }
 
 export default ShoppingCartProduct;
