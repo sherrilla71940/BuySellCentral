@@ -17,8 +17,12 @@ import { userStore, UserState } from "./zustand/UserStore";
 import SellerStore from "./components/seller-store/SellerStore";
 // import { useStore } from 'zustand';
 import { useEffect } from "react";
+import { useCartSlice } from "./zustand/ShoppingCartSlice";
+import { menuStore } from "./zustand/menuStore";
 
 function App() {
+  const { visible, setVisibility } = menuStore();
+  const closeCart = useCartSlice((state) => state.closeCart);
   // const store = userStore();
   const { id, setID } = userStore();
 
@@ -60,13 +64,19 @@ function App() {
           <Route
             path={"/"}
             element={
-              <>
+              <div
+                onClick={() => {
+                  console.log("outer div clicked");
+                  closeCart();
+                  setVisibility(false);
+                }}
+              >
                 <Navbar />
                 <ShoppingCart />
                 <Menu />
                 <StoreItems />
                 <div id="detail">{/* <Outlet /> */}</div>
-              </>
+              </div>
             }
           />
 

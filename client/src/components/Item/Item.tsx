@@ -34,7 +34,11 @@ export default function Item({ product }: Props) {
       {product.quantity && (
         <div
           className={styles.storeItem}
-          onClick={() => navigate(`/${product.id}`)}
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("item clicked");
+            navigate(`/${product.id}`);
+          }}
         >
           <p>{product.name}</p>
 

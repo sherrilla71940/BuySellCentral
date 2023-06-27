@@ -75,7 +75,13 @@ export default function Menu() {
         <div className={styles.container}>
           <div className={styles.menuItem}>
             {/* <div className={styles.options}>close</div> */}
-            <h1 className={styles.closeMenu} onClick={closeMenu}>
+            <h1
+              className={styles.closeMenu}
+              onClick={(e) => {
+                e.stopPropagation();
+                closeMenu();
+              }}
+            >
               +
             </h1>
           </div>

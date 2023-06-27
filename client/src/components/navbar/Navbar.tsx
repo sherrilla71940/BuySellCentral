@@ -67,7 +67,13 @@ export default function Navbar() {
     <nav className={styles.navbarContainerSticky}>
       <div className={styles.navbarContainerBlock}>
         {/* <img className={styles.img} alt='store_logo' src={logo} /> */}
-        <h1 className={styles.navbarLeft} onClick={() => navigate("/")}>
+        <h1
+          className={styles.navbarLeft}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigate("/");
+          }}
+        >
           BuySellCentral
         </h1>
 
@@ -76,7 +82,13 @@ export default function Navbar() {
         <div className={styles.navbarRight}>
           {!loggedIn ? null : (
             <>
-              <div className={styles.cartItems} onClick={switchBar}>
+              <div
+                className={styles.cartItems}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  switchBar();
+                }}
+              >
                 {cartItems.reduce((total: any, cartItem: any) => {
                   return total + cartItem.productQuantity;
                 }, 0)}
@@ -86,7 +98,10 @@ export default function Navbar() {
                 src={BagIcon}
                 className={styles.cartItemsIcon}
                 alt="logo"
-                onClick={switchBar}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  switchBar();
+                }}
               />
             </>
           )}
@@ -96,13 +111,22 @@ export default function Navbar() {
                 src="https://source.boringavatars.com/"
                 className={styles.userThumbnail}
                 alt="user pic"
-                onClick={clickAvatar}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  clickAvatar();
+                }}
               />
               {/* <span>{localStorage.getItem("email")}</span> */}
               <h4 className={styles.username}>Welcome back, {username}</h4>
             </div>
           ) : (
-            <button className={styles.button} onClick={redirect}>
+            <button
+              className={styles.button}
+              onClick={(e) => {
+                e.stopPropagation();
+                redirect();
+              }}
+            >
               Sign In
             </button>
           )}

@@ -68,7 +68,43 @@ export function convertCreatedAtToYYYYMMDD(dateTimeString: string) {
 //   const convertedCurrentDate = generateCurrentDateToYYYYMMDD() as DateString;
 //   return getTimeDifference(convertedCreatedAt, convertedCurrentDate);
 // }
-type DateString = `${string}-${string}-${string}`;
+// type DateString = `${string}-${string}-${string}`;
+
+// export function getTimeDifference(date: DateString): string {
+//   const oneMinute = 60 * 1000; // One minute in milliseconds
+//   const oneHour = 60 * oneMinute; // One hour in milliseconds
+//   const oneDay = 24 * oneHour; // One day in milliseconds
+
+//   const currentDate = new Date();
+//   const createdAt = new Date(date);
+
+//   const timeDifference = currentDate.getTime() - createdAt.getTime();
+
+//   if (timeDifference < oneMinute) {
+//     const diffSeconds = Math.round(timeDifference / 1000);
+//     if (diffSeconds === 1) return `${diffSeconds} second ago`;
+//     return `${diffSeconds} seconds ago`;
+//   } else if (timeDifference < oneHour) {
+//     const diffMinutes = Math.round(timeDifference / oneMinute);
+//     if (diffMinutes === 1) return `${diffMinutes} minute ago`;
+//     return `${diffMinutes} minutes ago`;
+//   } else if (timeDifference < oneDay) {
+//     const diffHours = Math.round(timeDifference / oneHour);
+//     if (diffHours === 1) return `${diffHours} hour ago`;
+//     return `${diffHours} hours ago`;
+//   } else {
+//     const diffDays = Math.round(timeDifference / oneDay);
+//     if (diffDays === 1) {
+//       return "Yesterday";
+//     } else {
+//       return `${diffDays} days ago`;
+//     }
+//   }
+// }
+
+// export function generateTimeAgo(createdAt: string) {
+//   return getTimeDifference(createdAt as DateString);
+// }
 
 export function getTimeDifference(date: DateString): string {
   const oneMinute = 60 * 1000; // One minute in milliseconds
@@ -85,15 +121,15 @@ export function getTimeDifference(date: DateString): string {
     if (diffSeconds === 1) return `${diffSeconds} second ago`;
     return `${diffSeconds} seconds ago`;
   } else if (timeDifference < oneHour) {
-    const diffMinutes = Math.round(timeDifference / oneMinute);
+    const diffMinutes = Math.floor(timeDifference / oneMinute);
     if (diffMinutes === 1) return `${diffMinutes} minute ago`;
     return `${diffMinutes} minutes ago`;
   } else if (timeDifference < oneDay) {
-    const diffHours = Math.round(timeDifference / oneHour);
+    const diffHours = Math.floor(timeDifference / oneHour);
     if (diffHours === 1) return `${diffHours} hour ago`;
     return `${diffHours} hours ago`;
   } else {
-    const diffDays = Math.round(timeDifference / oneDay);
+    const diffDays = Math.floor(timeDifference / oneDay);
     if (diffDays === 1) {
       return "Yesterday";
     } else {

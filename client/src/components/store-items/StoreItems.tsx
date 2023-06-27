@@ -9,6 +9,7 @@ import { ProductType } from "../../../../global-types/product";
 import { renderProductsStore } from "../../zustand/should-refetch-slice";
 
 export default function StoreItems() {
+  // event.stopPropagation();
   const { shouldReRender, setRerender } = renderProductsStore();
   const storeItems = useProductsSlice((state) => state.storeItems);
   const addProduct = useProductsSlice((state) => state.addProduct);
