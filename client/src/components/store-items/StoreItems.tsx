@@ -24,6 +24,13 @@ export default function StoreItems() {
 
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = event.target.value;
+    setSelectedOption(selectedValue);
+  };
+
   useEffect(() => {
     const fetchAllStoreProducts = async () => {
       try {
@@ -53,6 +60,8 @@ export default function StoreItems() {
     console.log(shouldReRender);
   }, [shouldReRender]);
 
+  function sortProducts() {}
+
   useEffect(() => {
     console.log("storeItems", storeItems);
     console.log("store:", storeItems);
@@ -61,16 +70,27 @@ export default function StoreItems() {
     );
   }, [storeItems]);
 
+  // come back to sorting later
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div className={styles.storeItems}>
-      {sortedStoreItems.map(
-        (product: ProductType) =>
-          product.quantity >= 1 && <Item key={product.id} product={product} />
-      )}
-    </div>
+    <>
+      <label htmlFor="options">Sort By:</label>
+      <select id="options" name="options" onChange={handleOptionChange}>
+        <option value="price">Price</option>
+        <option value="quantity">Quantity</option>
+        <option value="newest">Newest</option>
+        <option value="oldest">Oldest</option>
+      </select>
+      <div className={styles.storeItems}>
+        {sortedStoreItems.map(
+          (product: ProductType) =>
+            product.quantity >= 1 && <Item key={product.id} product={product} />
+        )}
+      </div>
+    </>
   );
 }
