@@ -1,4 +1,6 @@
-export function formatCurrentDateToYYYYMMDD() {
+type DateString = `${string}-${string}-${string}`;
+
+export function generateCurrentDateToYYYYMMDD() {
   const currentDate = new Date();
 
   const year = currentDate.getFullYear();
@@ -10,7 +12,29 @@ export function formatCurrentDateToYYYYMMDD() {
   return formattedDate;
 }
 
-async function convertCreatedAtToYYYYMMDD(dateTimeString: string) {
+export function convertCreatedAtToYYYYMMDD(dateTimeString: DateString) {
   const formattedDate = dateTimeString.slice(0, 10);
   return formattedDate;
+}
+
+export function getTimeDifference(
+  date1: DateString,
+  date2: DateString
+): string {
+  const oneDay = 24 * 60 * 60 * 1000; // One day in milliseconds
+
+  const firstDate = new Date(date1);
+  const secondDate = new Date(date2);
+
+  const diffDays = Math.round(
+    Math.abs((firstDate.getTime() - secondDate.getTime()) / oneDay)
+  );
+
+  if (diffDays === 0) {
+    return "Today";
+  } else if (diffDays === 1) {
+    return "Yesterday";
+  } else {
+    return `${diffDays} days ago`;
+  }
 }
