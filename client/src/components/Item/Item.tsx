@@ -3,6 +3,7 @@ import styles from "./Item.module.css";
 import { useNavigate } from "react-router-dom";
 import { ProductType } from "../../../../global-types/product";
 // import { Product } from '../../models/models'
+import { generateTimeAgo } from "../../helpers/date";
 
 type Props = {
   key: number;
@@ -33,6 +34,8 @@ export default function Item({ product }: Props) {
           </p>
           <p>Category: {product.category}</p>
           <p>Seller: {product.sellerName}</p>
+          <p>Listed: {generateTimeAgo(product.createdAt as string)}</p>
+          {/* <p>Listed: {getTimeDifference(p)}</p> */}
           <img className={styles.img} src={product.pictureUrl}></img>
         </div>
       )}

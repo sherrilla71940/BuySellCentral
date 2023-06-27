@@ -9,6 +9,7 @@ export async function addToShoppingCart(body: any) {
     if (response.ok) {
       const data = await response.json();
       // console.log(data)
+      console.log("added to cart", data);
       return data;
     } else {
       throw new Error("Failed to add product to shopping cart");

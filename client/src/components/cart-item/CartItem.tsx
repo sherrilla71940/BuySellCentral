@@ -107,9 +107,10 @@ export default function CartItem({
           <p className={styles.size}>{cartItem?.productQuantity}</p>
           <p
             className={styles.increase}
-            onClick={() =>
-              updateQuantityStateAndInBackend("increase", cartItem)
-            }
+            onClick={() => {
+              console.log("q cartitem", cartItem);
+              updateQuantityStateAndInBackend("increase", cartItem);
+            }}
           >
             +
           </p>

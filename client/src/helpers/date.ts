@@ -12,7 +12,7 @@ export function generateCurrentDateToYYYYMMDD() {
   return formattedDate;
 }
 
-export function convertCreatedAtToYYYYMMDD(dateTimeString: DateString) {
+export function convertCreatedAtToYYYYMMDD(dateTimeString: string) {
   const formattedDate = dateTimeString.slice(0, 10);
   return formattedDate;
 }
@@ -37,4 +37,12 @@ export function getTimeDifference(
   } else {
     return `${diffDays} days ago`;
   }
+}
+
+export function generateTimeAgo(createdAt: string) {
+  const convertedCreatedAt = convertCreatedAtToYYYYMMDD(
+    createdAt
+  ) as DateString;
+  const convertedCurrentDate = generateCurrentDateToYYYYMMDD() as DateString;
+  return getTimeDifference(convertedCreatedAt, convertedCurrentDate);
 }

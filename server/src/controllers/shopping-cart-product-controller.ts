@@ -34,6 +34,7 @@ async function addToShoppingCart(product: {
   shoppingCartId: number;
   productId: number;
   productQuantity: number;
+  inStockQuantity?: number;
 }) {
   // console.log('adding product to shopping cart')
   try {

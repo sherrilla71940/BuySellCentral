@@ -1,11 +1,20 @@
-import { Table, Column, Model, ForeignKey, BelongsTo } from "sequelize-typescript";
+import {
+  Table,
+  Column,
+  Model,
+  ForeignKey,
+  BelongsTo,
+} from "sequelize-typescript";
 import { type ShoppingCartProductType } from "../../../global-types";
 import ShoppingCart from "./shopping-cart-model";
 import Product from "./product-model";
 
 // uid going to be sent from firebase, so not optional
 @Table
-class ShoppingCartProduct extends Model<ShoppingCartProductType, ShoppingCartProductType> {
+class ShoppingCartProduct extends Model<
+  ShoppingCartProductType,
+  ShoppingCartProductType
+> {
   @Column({ primaryKey: true, autoIncrement: true })
   id: number;
 
@@ -25,6 +34,9 @@ class ShoppingCartProduct extends Model<ShoppingCartProductType, ShoppingCartPro
 
   @BelongsTo(() => Product)
   product: Product;
+
+  @ForeignKey(() => Product)
+  quantity: number;
 }
 
 export default ShoppingCartProduct;
