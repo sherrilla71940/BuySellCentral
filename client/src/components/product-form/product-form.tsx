@@ -259,6 +259,9 @@ export default function ProductForm() {
         <fieldset>
           <label className={styles.label}>name</label> <br />
           <input
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             className={styles.inputField}
             size={30}
             value={name}
@@ -270,6 +273,9 @@ export default function ProductForm() {
         <fieldset>
           <label className={styles.label}>category</label> <br />
           <input
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             className={styles.inputField}
             size={30}
             value={cat}
@@ -281,6 +287,9 @@ export default function ProductForm() {
         <fieldset>
           <label className={styles.label}>price</label> <br />
           <input
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             className={styles.inputField}
             min="0"
             value={price}
@@ -292,6 +301,9 @@ export default function ProductForm() {
         <fieldset>
           <label className={styles.label}>quantity</label> <br />
           <input
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             className={styles.inputField}
             min="1"
             value={quantity}
@@ -306,6 +318,9 @@ export default function ProductForm() {
           </label>
           <br />
           <input
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
             className={styles.inputField}
             type="file"
             name="product-pic"
