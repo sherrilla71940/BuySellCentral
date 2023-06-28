@@ -32,7 +32,7 @@ export default function ShoppingCart() {
 
   // (async () => {
   //   id = userStore((state) => state.id
-  // })()
+  // })()s
   const navigate = useNavigate();
 
   const cartItems = useCartSlice((state) => state.cartItems);
