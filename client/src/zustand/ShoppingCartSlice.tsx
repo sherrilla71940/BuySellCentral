@@ -32,7 +32,7 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
           ) == undefined
         ) {
           return {
-            cartItems: [...state.cartItems, { ...newItem, productQuantity: 1 }],
+            cartItems: [...state.cartItems, { ...newItem }],
           };
         } else {
           return { cartItems: [...state.cartItems] };
