@@ -127,7 +127,7 @@ export default function StoreItems() {
     console.log(shouldReRender);
   }, [shouldReRender]);
 
-  // function sortProducts() {}
+  function sortProducts() {}
 
   useEffect(() => {
     console.log("storeItems", storeItems);
