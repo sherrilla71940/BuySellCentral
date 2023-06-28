@@ -5,12 +5,13 @@ import Item from "../Item/Item";
 import { ProductType } from "../../../../global-types/product";
 import { getSellerProducts } from "../../services/seller-service";
 import { userStore } from "../../zustand/UserStore";
+import { renderProductsStore } from "../../zustand/should-refetch-slice";
 
 export default function SellerStore() {
   const [products, setProducts] = useState<ProductType[]>([]);
   console.log(products);
   const { id } = userStore();
-  // useEffect(() => {
+  const { shouldReRender } = renderProductsStore();
   //   console.log("id", id);
   //   console.log("storage id", localStorage.getItem("id"));
   // });
@@ -28,7 +29,7 @@ export default function SellerStore() {
       }
     };
     fetchProducts();
-  }, [id]);
+  }, [id, shouldReRender]);
 
   return (
     <div className={styles.storeItems}>
