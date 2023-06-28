@@ -111,10 +111,14 @@ export default async function checkOutCart(
         product.productId,
         product.productQuantity
       );
+      // update quantity of product in products table
       await updateProductQuantityAfterTransaction(
         product.productId,
         product.productQuantity
       );
+
+      // deletes shopping cart now that transaction is complete
+      await deleteShoppingCart(cartToCheckout.cartId);
     });
 
     await Promise.all(promises);
