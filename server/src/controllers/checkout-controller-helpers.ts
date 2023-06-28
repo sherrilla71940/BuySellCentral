@@ -16,32 +16,76 @@ export type requestCheckoutCart = {
 // note in frontend when checkout, request body must match type above
 
 // step 1
+// export async function createTransaction({
+//   buyerId,
+//   cartId,
+// }: // cart,
+// requestCheckoutCart): Promise<number | void> {
+//   try {
+//     const cart = await ShoppingCartProductModel.findAll({
+//       where: {
+//         shoppingCartId: cartId,
+//       },
+//     });
+//     cart.forEach(async (productObj) => {
+//       const product = await ProductModel.findOne({
+//         where: {
+//           id: productObj.productId,
+//         },
+//       });
+//       const productQuantity = product.quantity;
+//       if (productQuantity < productObj.productQuantity) {
+//         throw new Error("can't buy more of same product than what is in stock");
+//       }
+//     });
+
+//     const transaction = await TransactionBasketModel.create({
+//       buyerId: buyerId,
+//     });
+//     return transaction.id;
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }
 export async function createTransaction({
   buyerId,
   cartId,
-}: // cart,
-requestCheckoutCart): Promise<number | void> {
-  const cart = await ShoppingCartProductModel.findAll({
-    where: {
-      shoppingCartId: cartId,
-    },
-  });
-  cart.forEach(async (productObj) => {
-    const product = await ProductModel.findOne({
+}: requestCheckoutCart): Promise<number | void> {
+  try {
+    const cart = await ShoppingCartProductModel.findAll({
       where: {
-        id: productObj.productId,
+        shoppingCartId: cartId,
       },
     });
-    const productQuantity = product.quantity;
-    if (productQuantity < productObj.productQuantity) {
-      throw new Error("can't buy more of same product than what is in stock");
-    }
-  });
 
-  const transaction = await TransactionBasketModel.create({
-    buyerId: buyerId,
-  });
-  return transaction.id;
+    const validationPromises = cart.map(async (productObj) => {
+      const product = await ProductModel.findOne({
+        where: {
+          id: productObj.productId,
+        },
+      });
+
+      const productQuantity = product.quantity;
+      const purchaseQuantity = productObj.productQuantity;
+
+      if (purchaseQuantity > productQuantity) {
+        throw new Error(
+          `Cannot buy more of product ${product.id} than what is in stock.`
+        );
+      }
+    });
+
+    await Promise.all(validationPromises);
+
+    const transaction = await TransactionBasketModel.create({
+      buyerId: buyerId,
+    });
+
+    return transaction.id;
+  } catch (e) {
+    console.log(e);
+    throw e;
+  }
 }
 
 // step 2, run this function for each product together with step 3
