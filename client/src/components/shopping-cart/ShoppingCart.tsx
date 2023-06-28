@@ -147,7 +147,7 @@ export default function ShoppingCart() {
       emptyCart();
       closeCart();
       navigate("/");
-      location.reload();
+      // location.reload();
       // });
     }
   }
