@@ -8,6 +8,69 @@ import { getStoreProducts } from "../../services/store-products-service";
 import { ProductType } from "../../../../global-types/product";
 import { renderProductsStore } from "../../zustand/should-refetch-slice";
 
+// function sortProductsByCreatedAt(products: ProductType[]): ProductType[] {
+//   return [...products].sort((a, b) => {
+//     const dateA: any = a.createdAt && new Date(a.createdAt).getTime();
+//     const dateB: any = b.createdAt && new Date(b.createdAt).getTime();
+//     return ((dateB as number) - dateA) as number;
+//   });
+// }
+
+function sortProductsByCreatedAt(
+  products: ProductType[],
+  sortBy: "newest" | "oldest"
+): ProductType[] {
+  return [...products].sort((a, b) => {
+    const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    if (sortBy === "newest") {
+      return dateB - dateA;
+    } else if (sortBy === "oldest") {
+      return dateA - dateB;
+    }
+    return 0;
+  });
+}
+
+function sortProductsByQuantity(products: ProductType[]): ProductType[] {
+  return [...products].sort((a, b) => b.quantity - a.quantity);
+}
+
+function sortProductsByPrice(
+  products: ProductType[],
+  sortBy: "most expensive" | "least expensive"
+): ProductType[] {
+  return [...products].sort((a, b) => {
+    if (sortBy === "most expensive") {
+      return b.price - a.price;
+    } else if (sortBy === "least expensive") {
+      return a.price - b.price;
+    }
+    return 0;
+  });
+}
+// function
+
+function sortProductsHelper(
+  products: ProductType[],
+  option: string = "newest"
+): ProductType[] {
+  switch (option) {
+    case "newest":
+      return sortProductsByCreatedAt(products, "newest");
+    case "oldest":
+      return sortProductsByCreatedAt(products, "oldest");
+    case "most expensive":
+      return sortProductsByPrice(products, "most expensive");
+    case "least expensive":
+      return sortProductsByPrice(products, "least expensive");
+    case "quantity":
+      return sortProductsByQuantity(products);
+    default:
+      return products;
+  }
+}
+
 export default function StoreItems() {
   // event.stopPropagation();
   const { shouldReRender, setRerender } = renderProductsStore();
@@ -24,12 +87,16 @@ export default function StoreItems() {
 
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("newest");
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
     setSelectedOption(selectedValue);
   };
+
+  useEffect(() => {
+    console.log("selected option:", selectedOption);
+  }, [selectedOption]);
 
   useEffect(() => {
     const fetchAllStoreProducts = async () => {
@@ -65,10 +132,15 @@ export default function StoreItems() {
   useEffect(() => {
     console.log("storeItems", storeItems);
     console.log("store:", storeItems);
-    setSortedStoreItems(
-      [...storeItems].sort((a, b) => b.quantity - a.quantity)
-    );
-  }, [storeItems]);
+    // setSortedStoreItems(
+    //   // [...storeItems].sort((a, b) => b.quantity - a.quantity)
+    //   const sorted = sortProductsHelper(storeItems, selectedOption);
+
+    // );
+    const sorted = sortProductsHelper(storeItems, selectedOption);
+    setSortedStoreItems(sorted);
+    // change above to call the sorthelperFunc, with default to newest
+  }, [storeItems, selectedOption]);
 
   // come back to sorting later
 
@@ -79,11 +151,17 @@ export default function StoreItems() {
   return (
     <>
       <label htmlFor="options">Sort By:</label>
-      <select id="options" name="options" onChange={handleOptionChange}>
-        <option value="price">Price</option>
-        <option value="quantity">Quantity</option>
+      <select
+        id="options"
+        name="options"
+        onChange={handleOptionChange}
+        defaultValue={"newest"}
+      >
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
+        <option value="most expensive">Most Expensive</option>
+        <option value="least expensive">Least expensive</option>
+        <option value="quantity">Quantity</option>
       </select>
       <div className={styles.storeItems}>
         {sortedStoreItems.map(
