@@ -39,22 +39,37 @@ export default async function checkOutCart(
     if (!cartToCheckoutProducts.length) {
       throw new Error("no products in cart, cannot checkout empty cart");
     }
-    cartToCheckoutProducts.forEach(async (product) => {
-      // creates transaction product in transaction product table
+    // cartToCheckoutProducts.forEach(async (product) => {
+    //   // creates transaction product in transaction product table
+    //   await createTransactionProduct(
+    //     transactionId as number,
+    //     product.productId,
+    //     product.productQuantity
+    //   );
+    //   // update quantity of product in products table
+    //   await updateProductQuantityAfterTransaction(
+    //     product.productId,
+    //     product.productQuantity
+    //   );
+
+    //   // deletes shopping cart now that transaction is complete
+    //   await deleteShoppingCart(cartToCheckout.cartId);
+    // });
+    const promises = cartToCheckoutProducts.map(async (product) => {
       await createTransactionProduct(
         transactionId as number,
         product.productId,
         product.productQuantity
       );
-      // update quantity of product in products table
       await updateProductQuantityAfterTransaction(
         product.productId,
         product.productQuantity
       );
-
-      // deletes shopping cart now that transaction is complete
-      await deleteShoppingCart(cartToCheckout.cartId);
     });
+
+    await Promise.all(promises);
+
+    await deleteShoppingCart(cartToCheckout.cartId);
     res.status(200);
     res.json(
       `created transaction: ${transactionId} with products: ${cartToCheckoutProducts}`
