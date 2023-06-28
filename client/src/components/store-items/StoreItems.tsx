@@ -94,9 +94,9 @@ export default function StoreItems() {
     setSelectedOption(selectedValue);
   };
 
-  useEffect(() => {
-    console.log("selected option:", selectedOption);
-  }, [selectedOption]);
+  // useEffect(() => {
+  //   console.log("selected option:", selectedOption);
+  // }, [selectedOption]);
 
   useEffect(() => {
     const fetchAllStoreProducts = async () => {
@@ -139,6 +139,7 @@ export default function StoreItems() {
     // );
     const sorted = sortProductsHelper(storeItems, selectedOption);
     setSortedStoreItems(sorted);
+    console.log("selected option:", selectedOption);
     // change above to call the sorthelperFunc, with default to newest
   }, [storeItems, selectedOption]);
 

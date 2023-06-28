@@ -27,7 +27,7 @@ export default function Item({ product }: Props) {
     console.log("zzz", product.createdAt);
     console.log("getting time", generateTimeAgo(product.createdAt as string));
     setTimeAgo(generateTimeAgo(product.createdAt as string));
-  });
+  }, []);
 
   return (
     <div>
