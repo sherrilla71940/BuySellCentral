@@ -15,6 +15,7 @@ import { renderProductsStore } from "../../zustand/should-refetch-slice";
 //     return ((dateB as number) - dateA) as number;
 //   });
 // }
+import { SortOptionStore } from "../../zustand/sort-option-slice";
 
 function sortProductsByCreatedAt(
   products: ProductType[],
