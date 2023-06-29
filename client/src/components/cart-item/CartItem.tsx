@@ -115,7 +115,7 @@ export default function CartItem({
               if (
                 (cartItem.stockQuantity as number) <= cartItem.productQuantity
               ) {
-                alert("Cannot add more of a product than what is in stock");
+                // alert("Cannot add more of a product than what is in stock");
                 return;
               }
               cartItem.productQuantity &&
