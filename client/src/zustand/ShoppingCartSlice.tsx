@@ -129,10 +129,7 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
     increaseQuantity: (existingItem) =>
       set((state) => {
         const newState = state.cartItems.map((item) => {
-          if (
-            item.id === existingItem?.id &&
-            item.stockQuantity > item.productQuantity
-          ) {
+          if (item.id === existingItem?.id) {
             return {
               ...item,
               productQuantity: item.productQuantity + 1,
