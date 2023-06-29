@@ -39,6 +39,17 @@ export default async function checkOutCart(
     if (!cartToCheckoutProducts.length) {
       throw new Error("no products in cart, cannot checkout empty cart");
     }
+    // const attemptCheckoutOverInStockQ = cartToCheckoutProducts.some(
+    //   (prod: ShoppingCartProductType) =>
+    //     prod.productQuantity > prod?.stockQuantity
+    // );
+
+    // console.log("", attemptCheckoutOverInStockQ);
+    // if (attemptCheckoutOverInStockQ) {
+    //   throw new Error("attempt checkout more than stock");
+    //   // res.status(400);
+    //   // res.json("attempt checkout more than stock");
+    // }
     // cartToCheckoutProducts.forEach(async (product) => {
     //   // creates transaction product in transaction product table
     //   await createTransactionProduct(

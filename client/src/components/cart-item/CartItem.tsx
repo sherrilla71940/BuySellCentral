@@ -100,7 +100,8 @@ export default function CartItem({
             className={styles.decrease}
             onClick={(e) => {
               e.stopPropagation();
-              updateQuantityStateAndInBackend("decrease", cartItem);
+              cartItem.productQuantity > 1 &&
+                updateQuantityStateAndInBackend("decrease", cartItem);
             }}
           >
             -

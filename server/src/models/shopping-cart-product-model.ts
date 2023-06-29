@@ -35,6 +35,8 @@ class ShoppingCartProduct extends Model<
   @BelongsTo(() => Product)
   product: Product;
 
+  // @Column({ field: "quantity", allowNull: true })
+  // stockQuantity: number;
   // @Column
   // quantity: number;
   // @ForeignKey(() => Product)

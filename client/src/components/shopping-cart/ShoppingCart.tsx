@@ -126,9 +126,10 @@ export default function ShoppingCart() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
+
       // console.log(response);
-      // const data = await response.json();
-      // console.log("data", data);
+      const data = await response.json();
+      console.log("data", data);
       // console.log(payload);
 
       // set state to rerender

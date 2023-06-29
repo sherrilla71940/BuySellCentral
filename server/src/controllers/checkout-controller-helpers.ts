@@ -26,7 +26,8 @@ requestCheckoutCart): Promise<number | void> {
       shoppingCartId: cartId,
     },
   });
-  cart.forEach(async (productObj) => {
+
+  const promises = cart.map(async (productObj) => {
     const product = await ProductModel.findOne({
       where: {
         id: productObj.productId,
@@ -37,6 +38,8 @@ requestCheckoutCart): Promise<number | void> {
       throw new Error("can't buy more of same product than what is in stock");
     }
   });
+
+  await Promise.all(promises);
 
   const transaction = await TransactionBasketModel.create({
     buyerId: buyerId,

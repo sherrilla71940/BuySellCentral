@@ -227,12 +227,25 @@ export async function addProductToShoppingCart(
       productQuantity: 1,
     });
 
+    const stockProduct = await Product.findOne({
+      where: {
+        id: req.body.productId,
+      },
+    });
+
+    newShoppingCartProduct.stockQuantity = stockProduct.quantity;
+    console.log("quantity is", stockProduct.quantity);
+
     // console.log('NEW SC: ', newShoppingCartProduct)
 
     if (newShoppingCartProduct.id) {
       // console.log('Shopping Cart ID does exist', newShoppingCartProduct.id)
       res.status(200);
-      res.json(newShoppingCartProduct);
+      console.log(newShoppingCartProduct.dataValues);
+      res.json({
+        ...newShoppingCartProduct.dataValues,
+        stockQuantity: stockProduct.quantity,
+      });
     } else {
       throw new Error("error while adding product to shopping cart");
     }
