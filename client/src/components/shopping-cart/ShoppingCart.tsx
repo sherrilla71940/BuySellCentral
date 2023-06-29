@@ -131,6 +131,11 @@ export default function ShoppingCart() {
       const data = await response.json();
       console.log("data", data);
       // console.log(payload);
+      if (data === "ran into error in checkout") {
+        alert("can't checkout more than what's in stock");
+        emptyCart();
+        closeCart();
+      }
 
       // set state to rerender
       console.log("current", counter);

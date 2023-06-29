@@ -91,7 +91,7 @@ export default async function checkOutCart(
     );
   } catch (e: unknown) {
     if (e instanceof Error) {
-      console.log(e.message);
+      console.log("in catch", e.message);
       res.status(400);
       res.json("ran into error in checkout");
     }
