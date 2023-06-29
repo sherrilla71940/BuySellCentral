@@ -42,7 +42,6 @@ export default function ShoppingCart() {
   const emptyCart = useCartSlice((state) => state.emptyCart);
 
   // console.log("outside of effect and if", shouldReRender);
-
   useEffect(() => {
     emptyCart();
   }, []);
