@@ -133,8 +133,6 @@ export default function ShoppingCart() {
       // console.log(payload);
       if (data === "ran into error in checkout") {
         alert("can't checkout more than what's in stock");
-        emptyCart();
-        closeCart();
       }
 
       // set state to rerender

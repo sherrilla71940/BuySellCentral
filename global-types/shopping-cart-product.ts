@@ -3,5 +3,5 @@ export type ShoppingCartProductType = {
   shoppingCartId: number;
   productId: number;
   productQuantity: number;
-  stockQuantity?: number;
+  stockQuantity: number;
 };

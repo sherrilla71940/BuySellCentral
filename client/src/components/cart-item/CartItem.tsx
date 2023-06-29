@@ -112,7 +112,12 @@ export default function CartItem({
             onClick={(e) => {
               e.stopPropagation();
               console.log("q cartitem", cartItem);
-              updateQuantityStateAndInBackend("increase", cartItem);
+              if (cartItem.stockQuantity <= cartItem.productQuantity) {
+                alert("Cannot add more of a product than what is in stock");
+                return;
+              }
+              cartItem.productQuantity &&
+                updateQuantityStateAndInBackend("increase", cartItem);
             }}
           >
             +
