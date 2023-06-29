@@ -15,7 +15,7 @@ import { renderProductsStore } from "../../zustand/should-refetch-slice";
 //     return ((dateB as number) - dateA) as number;
 //   });
 // }
-import { useSortOptionStore } from "../../zustand/sort-option-store";
+import { SortOptionStore } from "../../zustand/sort-option-slice";
 
 function sortProductsByCreatedAt(
   products: ProductType[],
@@ -73,8 +73,6 @@ function sortProductsHelper(
 }
 
 export default function StoreItems() {
-  const storeOption = useSortOptionStore((state) => state.sortOption);
-  const storeSetSortOption = useSortOptionStore((state) => state.setSortOption);
   // event.stopPropagation();
   const { shouldReRender, setRerender } = renderProductsStore();
   const storeItems = useProductsSlice((state) => state.storeItems);
@@ -90,12 +88,11 @@ export default function StoreItems() {
 
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
-  // const [selectedOption, setSelectedOption] = useState("newest");
+  const [selectedOption, setSelectedOption] = useState("newest");
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
-    // setSelectedOption(selectedValue);
-    storeSetSortOption(selectedValue);
+    setSelectedOption(selectedValue);
   };
 
   // useEffect(() => {
@@ -131,6 +128,8 @@ export default function StoreItems() {
     console.log(shouldReRender);
   }, [shouldReRender]);
 
+  function sortProducts() {}
+
   useEffect(() => {
     console.log("storeItems", storeItems);
     console.log("store:", storeItems);
@@ -139,14 +138,11 @@ export default function StoreItems() {
     //   const sorted = sortProductsHelper(storeItems, selectedOption);
 
     // );
-    // const sorted = sortProductsHelper(storeItems, selectedOption);
-    const sorted = sortProductsHelper(storeItems, storeOption);
+    const sorted = sortProductsHelper(storeItems, selectedOption);
     setSortedStoreItems(sorted);
-    // console.log("selected option:", selectedOption);
-    console.log("selected option:", storeOption);
+    console.log("selected option:", selectedOption);
     // change above to call the sorthelperFunc, with default to newest
-    // }, [storeItems, selectedOption]);
-  }, [storeItems, storeOption]);
+  }, [storeItems, selectedOption]);
 
   // come back to sorting later
 
@@ -161,7 +157,7 @@ export default function StoreItems() {
         id="options"
         name="options"
         onChange={handleOptionChange}
-        defaultValue={storeOption}
+        defaultValue={"newest"}
       >
         <option value="newest">Newest</option>
         <option value="oldest">Oldest</option>
