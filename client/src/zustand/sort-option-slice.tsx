@@ -6,6 +6,6 @@ export type SortOptionStore = {
 };
 
 export const useSortOptionStore = create<SortOptionStore>((set) => ({
-  sortOption: "newest",
+  sortOption: "",
   setSortOption: (value: string) => set({ sortOption: value }),
 }));
