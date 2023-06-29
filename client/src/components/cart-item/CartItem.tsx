@@ -27,6 +27,8 @@ export default function CartItem({
 
   console.log("->", cartItem.productId);
   const [fetchedItem, setFetchedItem] = useState<ProductType>();
+  const [fadedPlus, setFadedPlus] = useState("increase");
+  const [fadedMinus, setFadedMinus] = useState("decrease");
 
   useEffect(() => {
     const fetchShoppingCartProduct = async () => {
@@ -114,6 +116,7 @@ export default function CartItem({
               console.log("q cartitem", cartItem);
               if (cartItem.stockQuantity <= cartItem.productQuantity) {
                 alert("Cannot add more of a product than what is in stock");
+                console.log("styles increase", styles.increase);
                 return;
               }
               cartItem.productQuantity &&

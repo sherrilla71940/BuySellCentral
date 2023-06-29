@@ -200,6 +200,12 @@ export default function ShoppingCart() {
               className={styles.checkout}
               onClick={(e) => {
                 e.stopPropagation();
+                console.log("clicked checkout");
+                // const cartId = getShoppingCartId();
+                if (!cartItems.length) {
+                  alert("Cannot checkout empty cart");
+                  return;
+                }
                 checkout();
               }}
             >
