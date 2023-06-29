@@ -37,8 +37,13 @@
   width: 70px;
 }
 
-.increase, .decrease {
+.increase,
+.decrease {
   cursor: pointer;
+}
+
+.fade {
+  opacity: 0.5;
 }
 
 .delete {

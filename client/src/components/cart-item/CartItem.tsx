@@ -14,6 +14,11 @@ import {
 } from "../../services/shopping-cart-service";
 // import { useState } from 'react';
 
+import {
+  IncreaseDecreaseStore,
+  useIncreaseDecreaseStore,
+} from "../../zustand/fadedStore";
+
 export default function CartItem({
   cartItem,
 }: {
@@ -27,8 +32,22 @@ export default function CartItem({
 
   console.log("->", cartItem.productId);
   const [fetchedItem, setFetchedItem] = useState<ProductType>();
-  const [fadedPlus, setFadedPlus] = useState("increase");
-  const [fadedMinus, setFadedMinus] = useState("decrease");
+  // const [fadedPlus, setFadedPlus] = useState(styles.increase);
+  // const [fadedMinus, setFadedMinus] = useState(styles.decrease);
+
+  const increaseQuantityStyleClass = useIncreaseDecreaseStore(
+    (state) => state.increaseStylesClass
+  );
+  const setIncreaseQuantityStyleClass = useIncreaseDecreaseStore(
+    (state) => state.setIncreaseStylesClass
+  );
+
+  const decreaseQuantityStyleClass = useIncreaseDecreaseStore(
+    (state) => state.decreaseStylesClass
+  );
+  const setDecreaseQuantityStyleClass = useIncreaseDecreaseStore(
+    (state) => state.setDecreaseStylesClass
+  );
 
   useEffect(() => {
     const fetchShoppingCartProduct = async () => {
@@ -49,6 +68,23 @@ export default function CartItem({
 
     fetchShoppingCartProduct();
   }, []);
+
+  useEffect(() => {
+    if (fetchedItem) {
+      if (fetchedItem.stockQuantity <= fetchedItem.productQuantity) {
+        setIncreaseQuantityStyleClass(styles.fade);
+      }
+      if (fetchedItem.stockQuantity > fetchedItem.productQuantity) {
+        setIncreaseQuantityStyleClass(styles.increase);
+      }
+      if (fetchedItem.productQuantity <= 1) {
+        setDecreaseQuantityStyleClass(styles.fade);
+      }
+      if (fetchedItem.productQuantity > 1) {
+        setDecreaseQuantityStyleClass(styles.decrease);
+      }
+    }
+  });
 
   async function updateQuantityStateAndInBackend(
     action: "increase" | "decrease",
@@ -99,9 +135,12 @@ export default function CartItem({
 
         <div className={styles.right}>
           <p
-            className={styles.decrease}
+            className={decreaseQuantityStyleClass}
             onClick={(e) => {
               e.stopPropagation();
+              if (cartItem.productQuantity <= 1) {
+                setDecreaseQuantityStyleClass(styles.fade);
+              }
               cartItem.productQuantity > 1 &&
                 updateQuantityStateAndInBackend("decrease", cartItem);
             }}
@@ -110,13 +149,16 @@ export default function CartItem({
           </p>
           <p className={styles.size}>{cartItem?.productQuantity}</p>
           <p
-            className={styles.increase}
+            className={increaseQuantityStyleClass}
             onClick={(e) => {
               e.stopPropagation();
               console.log("q cartitem", cartItem);
-              if (cartItem.stockQuantity <= cartItem.productQuantity) {
-                alert("Cannot add more of a product than what is in stock");
-                console.log("styles increase", styles.increase);
+              if (
+                (cartItem.stockQuantity as number) <= cartItem.productQuantity
+              ) {
+                // alert("Cannot add more of a product than what is in stock");
+                // console.log("styles increase", styles.increase);
+                setIncreaseQuantityStyleClass(styles.fade);
                 return;
               }
               cartItem.productQuantity &&
