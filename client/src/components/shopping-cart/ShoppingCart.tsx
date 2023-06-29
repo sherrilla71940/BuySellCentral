@@ -60,8 +60,8 @@ export default function ShoppingCart() {
           if (Array.isArray(shoppingCartProducts)) {
             shoppingCartProducts.forEach((product: ShoppingCartProductType) => {
               addItem(product);
-              setRerender(!shouldReRender);
               // scrollToBottom("_container_sbzq6_1");
+              setRerender(!shouldReRender);
             });
             console.log(cartItems);
             console.log(shoppingCartProducts);
