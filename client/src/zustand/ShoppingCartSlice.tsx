@@ -83,7 +83,7 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
           console.log("logging 1", itemIdToRemove);
           state.removeFromCart(itemIdToRemove);
           // return { cartItems: newState } as {
-          //   cartItems: ShoppingCartProductType[];
+          //   cartItems: ShoppingCartProductType[];d
           // };
           console.log("logging", state.cartItems);
           return { cartItems: state.cartItems };
