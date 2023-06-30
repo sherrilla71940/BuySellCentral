@@ -16,7 +16,7 @@ import { ProductType } from "../../../../global-types/product";
 import { getSpecificProduct } from "../../services/store-products-service";
 
 export default function ItemDetails() {
-  const { id } = userStore();
+  const { id, username } = userStore();
   const { visible, setVisibility } = menuStore();
   const storeItems = useProductsSlice((state) => state.storeItems);
   const addItem = useCartSlice((state) => state.addItem);
@@ -133,12 +133,17 @@ export default function ItemDetails() {
           className={styles.addToCart}
           onClick={async (e) => {
             e.stopPropagation();
+            console.log("username", username);
             if (product) {
               const prodInCart = cartItems.findIndex(
                 (prod) => prod.productId === product?.id
               );
               if (prodInCart !== -1) {
                 alert("Already in cart");
+                return;
+              }
+              if (product.sellerName === username) {
+                alert("Cannot purchase your own product");
                 return;
               }
               const newCartItem: ShoppingCartProductType =

@@ -87,7 +87,7 @@ export default function CartItem({
       <img
         className={styles.img}
         src={fetchedItem?.pictureUrl}
-        alt="small product image"
+        alt="Product Image"
       />
       <div className={styles.itemInfo}>
         <div className={styles.left}>
