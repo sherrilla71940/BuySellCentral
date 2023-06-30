@@ -326,15 +326,36 @@ export async function getAllProductsFromShoppingCart(
 
     if (hasShoppingCartID) {
       const { shoppingCartProducts } = shoppingCart;
-      return res.json(shoppingCartProducts);
+      const stockQuantities = shoppingCartProducts.map(async (prod) => {
+        const stockProduct = await Product.findOne({
+          where: {
+            id: prod.productId,
+          },
+        });
+
+        console.log("stock product", stockProduct.quantity);
+
+        // newShoppingCartProduct.stockQuantity = stockProduct.quantity;
+        // console.log("quantity is", stockProduct.quantity);
+        return { ...prod.dataValues, stockQuantity: stockProduct.quantity };
+      });
+      // shopping
+      // return res.json(shoppingCartProducts);
+      const returnProducts = await Promise.all(stockQuantities);
+      console.log("return product............", returnProducts);
+      res.json(returnProducts);
+    } else if (!hasShoppingCartID) {
+      res.json(
+        "this user does not have a cart, must add at least 1 product to cart first"
+      );
     }
 
     // send a response
     // code runs only if shopping cart DOES exist
     // console.log('CASE')
-    res.json(
-      "this user does not have a cart, must add at least 1 product to cart first"
-    );
+    // res.json(
+    //   "this user does not have a cart, must add at least 1 product to cart first"
+    // );
   } catch (error) {
     // send a response
     console.log(error);
