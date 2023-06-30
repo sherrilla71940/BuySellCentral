@@ -4,7 +4,8 @@
   position: fixed;
   box-sizing: border-box;
   right: 0;
-  width: 30vw;
+  /* width: 30vw; */
+  width: 23vw;
   max-width: 600px;
   height: calc(100vh - 65px);
   padding: 20px;

@@ -1,6 +1,7 @@
 .navbarContainerSticky {
   display: sticky;
-  height: 100px;
+  /* height: 100px; */
+  height: 80px;
   background-color: #eeeeee;
 
   border-bottom: 1px solid #118259;
@@ -19,6 +20,7 @@
   height: 65px;
 
   margin: 0 0 0 30px;
+  margin-right: 10px;
   color: #118259;
 
   cursor: pointer;
@@ -89,6 +91,7 @@
 .button {
   background-color: #118259;
   padding-bottom: 12px;
+  /* padding-bottom: 8px; */
 }
 
 .img {

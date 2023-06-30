@@ -1,12 +1,10 @@
-
-
 #detail {
   display: flex;
   justify-content: center;
   align-items: center;
 
   width: 100%;
-  height: calc(100vh - 65px);
+  /* height: calc(100vh - 65px); */
 
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }

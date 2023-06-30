@@ -40,18 +40,20 @@ export default function Item({ product }: Props) {
             navigate(`/${product.id}`);
           }}
         >
-          <p>{product.name}</p>
+          <div className={styles.pwrapper}>
+            <p>{product.name}</p>
 
-          <p>$ {product.price} USD</p>
-          <p>
-            {product.quantity}
-            {product.quantity > 0 && product.quantity === 1
-              ? " product in stock"
-              : " products in stock"}
-          </p>
-          <p>Category: {product.category}</p>
-          <p>Seller: {product.sellerName}</p>
-          <p>Listed: {timeAgo}</p>
+            <p>$ {product.price} USD</p>
+            <p>
+              {product.quantity}
+              {product.quantity > 0 && product.quantity === 1
+                ? " product in stock"
+                : " products in stock"}
+            </p>
+            <p>Category: {product.category}</p>
+            <p>Seller: {product.sellerName}</p>
+            <p>Listed: {timeAgo}</p>
+          </div>
           {/* <p>Listed: {getTimeDifference(p)}</p> */}
           <img className={styles.img} src={product.pictureUrl}></img>
         </div>
