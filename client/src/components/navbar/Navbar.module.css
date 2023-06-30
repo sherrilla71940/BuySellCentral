@@ -1,9 +1,10 @@
 .navbarContainerSticky {
-  display: sticky;
+  /* display: sticky; */
+  position: fixed;
+  width: 100vw;
   /* height: 100px; */
   height: 80px;
   background-color: #eeeeee;
-
   border-bottom: 1px solid #118259;
 }
 
