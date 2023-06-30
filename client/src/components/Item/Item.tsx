@@ -42,7 +42,7 @@ export default function Item({ product }: Props) {
         >
           <div className={styles.imageWrapper}>
             <img className={styles.img} src={product.pictureUrl} alt="" />
-            <p id={styles.imageText}>Listed: {timeAgo}</p>
+            <p id={styles.imageText}>{timeAgo}</p>
           </div>
           <div className={styles.pwrapper}>
             <p>{product.name}</p>
