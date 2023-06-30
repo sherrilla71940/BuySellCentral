@@ -6,6 +6,7 @@
   width: 100%;
   /* min-width: 100px; */
   box-sizing: border-box;
+  /* position: relative; */
 }
 
 .itemInfo {
@@ -15,7 +16,7 @@
   justify-content: space-between;
   align-items: center;
 
-  padding-right: 20px;
+  /* padding-right: 20px; */
 
   width: 30%;
 }
@@ -47,6 +48,11 @@
 .delete {
   rotate: 45deg;
   align-self: flex-start;
+  /* justify-self: flex-start; */
   cursor: pointer;
   font-size: 30px;
+  color: rgb(255, 54, 54);
+  /* position: absolute; */
+  /* right: 0; */
+  /* bottom: 0; */
 }

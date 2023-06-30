@@ -14,6 +14,7 @@ import { ShoppingCartProductType } from "../../../../global-types/shopping-cart-
 import { renderProductsStore } from "../../zustand/should-refetch-slice";
 import { ProductType } from "../../../../global-types/product";
 import { getSpecificProduct } from "../../services/store-products-service";
+import { useNavigate } from "react-router-dom";
 
 export default function ItemDetails() {
   const { id, username } = userStore();
@@ -24,6 +25,7 @@ export default function ItemDetails() {
   const cartItems = useCartSlice((state) => state.cartItems);
 
   const { shouldReRender, setRerender } = renderProductsStore();
+  const navigate = useNavigate();
 
   // useEffect(() => {
   //   // setVisibility(false)
@@ -133,6 +135,10 @@ export default function ItemDetails() {
           className={styles.addToCart}
           onClick={async (e) => {
             e.stopPropagation();
+            if (!localStorage.getItem("user")) {
+              alert("You must log in to add item to cart");
+              navigate("/login");
+            }
             console.log("username", username);
             if (product) {
               const prodInCart = cartItems.findIndex(

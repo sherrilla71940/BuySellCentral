@@ -127,7 +127,7 @@ export default function CartItem({
           </p>
         </div>
 
-        {/* <p
+        <p
           className={styles.delete}
           onClick={(e) => {
             e.stopPropagation();
@@ -139,9 +139,9 @@ export default function CartItem({
           }}
         >
           +
-        </p> */}
+        </p>
       </div>
-      <p
+      {/* <p
         className={styles.delete}
         onClick={(e) => {
           e.stopPropagation();
@@ -153,7 +153,7 @@ export default function CartItem({
         }}
       >
         +
-      </p>
+      </p> */}
     </div>
   );
 }

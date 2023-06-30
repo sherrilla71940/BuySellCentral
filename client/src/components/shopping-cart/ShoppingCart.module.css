@@ -74,6 +74,8 @@
   /* box-sizing: border-box; */
 
   background-color: #c4ddd4;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .cartFooter {
