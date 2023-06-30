@@ -40,6 +40,10 @@ export default function Item({ product }: Props) {
             navigate(`/${product.id}`);
           }}
         >
+          <div className={styles.imageWrapper}>
+            <img className={styles.img} src={product.pictureUrl} alt="" />
+            <p id={styles.imageText}>Listed: {timeAgo}</p>
+          </div>
           <div className={styles.pwrapper}>
             <p>{product.name}</p>
 
@@ -52,10 +56,9 @@ export default function Item({ product }: Props) {
             </p>
             <p>Category: {product.category}</p>
             <p>Seller: {product.sellerName}</p>
-            <p>Listed: {timeAgo}</p>
+            {/* <p>Listed: {timeAgo}</p> */}
           </div>
           {/* <p>Listed: {getTimeDifference(p)}</p> */}
-          <img className={styles.img} src={product.pictureUrl}></img>
         </div>
       )}
     </div>

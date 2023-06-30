@@ -4,8 +4,10 @@
 
 .storeItems {
   box-sizing: border-box;
-  width: 100vw;
-  height: calc(100vh - 65px);
+  width: 100%;
+  /* height: calc(100vh - 65px); */
+  height: 100%;
+  /* height: calc(200vh); */
   /* height: calc(90vh - 65px); */
   /* padding: 50px 75px 0 75px; */
   padding: 50px 75px 0 60px;

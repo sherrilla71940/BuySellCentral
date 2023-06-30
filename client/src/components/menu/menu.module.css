@@ -6,7 +6,7 @@
   box-sizing: border-box;
   right: 0;
   /* width: 30vw; */
-  width: 22vw;
+  width: 21vw;
   max-width: 600px;
   /* height: calc(100vh - 65px); */
   height: calc(100vh - 81px);
@@ -17,6 +17,7 @@
   background-color: #eeeeee;
   /* justify-self: center; */
   bottom: 0;
+  z-index: 99;
 }
 
 .menuItem {

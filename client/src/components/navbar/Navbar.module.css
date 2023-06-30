@@ -6,6 +6,7 @@
   height: 80px;
   background-color: #eeeeee;
   border-bottom: 1px solid #118259;
+  z-index: 100;
 }
 
 .navbarContainerBlock {
