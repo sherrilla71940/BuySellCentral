@@ -27,6 +27,27 @@
   color: #118259;
 }
 
+.xItem {
+  display: flex;
+  /* justify-content: flex-start; */
+  align-items: center;
+  color: #118259;
+}
+
+.menuItem:hover {
+  /* transform: translate(0, 0.1rem); */
+  /* box-shadow: 0 -10px 26px -5px rgb(220, 249, 243); */
+  transform: scale(1.03);
+  /* background-color: aqua; */
+  /* border-bottom: 1px solid rgb(187, 187, 187); */
+  /* text-decoration: dashed; */
+  /* box-shadow: inset 100px 0 0 0 #54b3d6; */
+  /* padding: 5px; */
+  /* box-shadow: rgba(93, 93, 93, 0.18) 0px 1px 1px; */
+  /* border-radius: 15 15 15px 15px; */
+  /* border-radius: 15px 15px 15px 15px; */
+}
+
 .closeMenu {
   /* justify-content: flex-end; */
   rotate: 45deg;

@@ -4,7 +4,8 @@
   width: 100vw;
   /* height: 100px; */
   height: 80px;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
   border-bottom: 1px solid #118259;
   z-index: 100;
 }
@@ -62,7 +63,8 @@
   height: 30px;
   border-radius: 4px;
   border: 2px solid #118259;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
 
   margin-left: 10px;
 

@@ -73,7 +73,7 @@ export default function Menu() {
     <>
       {visible ? (
         <div className={styles.container}>
-          <div className={styles.menuItem}>
+          <div className={styles.xItem}>
             {/* <div className={styles.options}>close</div> */}
             <h1
               className={styles.closeMenu}

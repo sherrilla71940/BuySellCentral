@@ -12,7 +12,8 @@
   /* padding: 50px 75px 0 75px; */
   padding: 50px 75px 0 60px;
   padding-top: 80px;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
   /* overflow: scroll; */
   /* display: grid; */
   /* grid-template-columns: repeat(auto-fill,minmax(250px, 350px)); */

@@ -3,7 +3,8 @@
 /* https://stackoverflow.com/questions/52417889/setting-minimum-and-maximum-number-of-columns-using-css-grid */
 
 .title {
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
   color: #118259;
   padding-left: 100px;
   padding-bottom: 10px;
@@ -14,7 +15,8 @@
   width: 100vw;
   /* height: calc(100vh - 65px); */
   padding: 100px;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
   color: #118259;
   /* overflow-x: hidden;
   overflow-y: hidden; */

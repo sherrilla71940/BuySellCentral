@@ -1,24 +1,38 @@
-.container {
+/* .container {
   border: 0.1px solid #118259;
   display: flex;
   flex-direction: column;
   position: fixed;
-
   box-sizing: border-box;
-  /* overflow: scroll; */
   z-index: 99;
-
   right: 0;
-  /* width: 30vw; */
   width: 22vw;
   min-width: 150px;
   height: 600px;
-  /* height: calc(100vh - 65px); */
-
   padding: 20px;
+  background-color: rgb(240, 240, 240);
+} */
 
-  /* border-left: 1px solid #118259; */
+.container {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  /* position: sticky; */
+  box-sizing: border-box;
+  right: 0;
+  /* width: 30vw; */
+  width: 21vw;
+  max-width: 600px;
+  /* height: calc(100vh - 65px); */
+  height: calc(100vh - 81px);
+  padding: 20px;
+  border: 0.5px solid #118259;
+  border-top: none;
+  /* z-index: auto; */
   background-color: #eeeeee;
+  /* justify-self: center; */
+  bottom: 0;
+  z-index: 99;
 }
 
 .cartHeader {
@@ -67,7 +81,8 @@
   box-sizing: border-box;
 
   color: #118259;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -96,7 +111,8 @@
 
   box-sizing: border-box;
 
-  color: #eeeeee;
+  /* color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
   background-color: #118259;
 
   border-radius: 4px;

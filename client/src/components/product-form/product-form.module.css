@@ -3,7 +3,8 @@
   flex-direction: column;
   align-items: center;
   color: #118259;
-  background-color: #eeeeee;
+  /* background-color: #eeeeee; */
+  background-color: rgb(240, 240, 240);
   font-style: normal;
   font-weight: 500;
   border: #118259;
