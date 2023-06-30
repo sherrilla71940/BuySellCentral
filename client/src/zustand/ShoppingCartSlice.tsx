@@ -48,7 +48,8 @@ export const useCartSlice = create<ShoppingCartState & ShoppingCartAction>()(
           const updatedItem = {
             ...existingItem,
             productQuantity:
-              existingItem.productQuantity + newItem.productQuantity,
+              // existingItem.productQuantity + newItem.productQuantity,
+              newItem.productQuantity,
           };
 
           const updatedCartItems = state.cartItems.map((item) =>

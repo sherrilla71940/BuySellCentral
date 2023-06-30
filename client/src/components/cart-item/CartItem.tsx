@@ -34,6 +34,7 @@ export default function CartItem({
         const shoppingCartProduct = await getShoppingCartProduct(
           cartItem.productId
         );
+        console.log("shoppingcartproduct", shoppingCartProduct);
         // console.log('shoppingCartProducts: ', shoppingCartProducts)
 
         if (shoppingCartProduct.name) {

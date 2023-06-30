@@ -41,7 +41,7 @@ export default function ShoppingCart() {
   const closeCart = useCartSlice((state) => state.closeCart);
   const emptyCart = useCartSlice((state) => state.emptyCart);
 
-  // console.log("outside of effect and if", shouldReRender);
+  console.log("outside of effect and if", shouldReRender);
   useEffect(() => {
     emptyCart();
   }, []);
@@ -51,11 +51,13 @@ export default function ShoppingCart() {
       // console.log("in use effect ", shouldReRender);
       console.log(id);
       const fetchAllShoppingCartProducts = async () => {
+        console.log("in fetch");
         try {
           // id = userStore((state) => state.id);
           // console.log(id);
           console.log("id change!!");
           const shoppingCartProducts = await getShoppingCartProducts(id);
+          console.log("in fetch", shoppingCartProducts);
           // console.log('shoppingCartProducts: ', shoppingCartProducts)
           if (Array.isArray(shoppingCartProducts)) {
             shoppingCartProducts.forEach((product: ShoppingCartProductType) => {
@@ -73,7 +75,7 @@ export default function ShoppingCart() {
       };
       console.log("fetching");
       fetchAllShoppingCartProducts();
-      console.log(cartItems);
+      console.log("cart items", cartItems);
       console.log(id);
     }
   }, [id]);
