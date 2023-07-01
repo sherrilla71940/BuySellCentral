@@ -18,6 +18,7 @@
   /* justify-self: center; */
   bottom: 0;
   z-index: 99;
+  /* box-sizing: border-box; */
 }
 
 .menuItem {
@@ -26,6 +27,9 @@
   justify-content: flex-start;
   align-items: center;
   color: #118259;
+  height: 46px;
+  max-height: 46px;
+  box-sizing: border-box;
   /* color: #2b5967; */
 }
 
@@ -40,7 +44,9 @@
 .menuItem:hover {
   /* transform: translate(0, 0.1rem); */
   /* box-shadow: 0 -10px 26px -5px rgb(220, 249, 243); */
-  transform: scale(1.03);
+  /* transform: scale(1.03); */
+  border: 1px solid #2b5967;
+  /* height: 46px; */
   /* background-color: aqua; */
   /* border-bottom: 1px solid rgb(187, 187, 187); */
   /* text-decoration: dashed; */
@@ -56,6 +62,9 @@
   rotate: 45deg;
   cursor: pointer;
   color: #118259;
+  color: #2b5967;
+
+  /* color: #c4ddd4; */
 }
 
 .container > ul {

@@ -46,7 +46,6 @@ export default function Item({ product }: Props) {
           </div>
           <div className={styles.pwrapper}>
             <p>{product.name}</p>
-
             <p id={styles.price}>${product.price}</p>
             <p>
               {product.quantity}

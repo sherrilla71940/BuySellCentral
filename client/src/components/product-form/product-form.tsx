@@ -268,7 +268,7 @@ export default function ProductForm() {
             type="text"
             onChange={nameHandler}
             required
-            placeholder="Your name"
+            placeholder="Name of your product"
           />
         </fieldset>
         <fieldset>

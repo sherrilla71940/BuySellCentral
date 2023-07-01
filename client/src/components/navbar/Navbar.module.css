@@ -124,6 +124,10 @@
   cursor: pointer;
 }
 
+.cartItemsIcon:hover {
+  /* border: 1px solid #adddd0; */
+}
+
 .cartItems:hover {
   transform: scale(1.03);
 }
@@ -146,6 +150,7 @@
 
 .button {
   background-color: #118259;
+  background-color: #c4ddd4;
   /* background-color: #fff6f4; */
   padding-bottom: 12px;
   /* padding-bottom: 8px; */
@@ -168,6 +173,7 @@
 
 .userThumbnail:hover {
   transform: scale(1.03);
+  /* border: 1px solid #adddd0; */
 }
 
 .username {

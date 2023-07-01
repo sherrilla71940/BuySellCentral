@@ -6,7 +6,7 @@
   cursor: pointer;
   width: 180px;
   /* max-height: 481px; */
-  height: 250px;
+  height: 280px;
   /* border: 0.1px solid #118259; */
   /* padding: 5px; */
   box-shadow: rgba(93, 93, 93, 0.18) 0px 3px 8px;
@@ -49,15 +49,22 @@
 }
 
 .imageWrapper {
-  position: relative;
+  /* position: relative;
+  display: flex; */
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   z-index: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
 }
 
 .img {
   display: block;
+  /* position: relative; */
+  /* /* display: flex; */
   /* width: 260px;
   height: 260px; */
   border-radius: 5px;
@@ -67,6 +74,7 @@
 #imageText {
   /* background-color: #f1f1f1; */
   border-radius: 9px;
+  /* align-self: baseline; */
   /* padding-left: 5px;
   padding-right: 5px; */
   /* display: flex;
@@ -74,12 +82,19 @@
   width: 30%; */
   /* padding-left: 10px;
   padding-right: 10px; */
+  /* position: relative;
+  left: 0;
+  top: 3px; */
   padding: 5px;
   color: #ffffff;
   position: absolute;
+  top: 2px;
+  left: 1px;
+  /* align-self: flex-start; */
+  /* margin-left: 30px; */
   /* bottom: 0px; */
-  left: 4px;
-  top: 4px;
+  /* left: 4px; */
+  /* top: 4px; */
   /* color: #118259; */
   margin: 0;
   font-size: 10px;
@@ -96,8 +111,8 @@
   height: 230px; */
   /* width: 230px;
   height: 230px; */
-  width: 180px;
-  height: 180px;
+  width: 170px;
+  height: 170px;
 
   border-radius: 4px;
   background-color: #c4ddd4;
