@@ -1,6 +1,8 @@
 .container {
   /* flex-direction: column; */
   display: flex;
+  flex-direction: column;
+  /* max-height: 224.52px; */
   align-items: center;
   color: #118259;
   width: 100%;
@@ -11,8 +13,9 @@
 
 .itemInfo {
   position: relative;
-
+  /* max-height: 100.52px; */
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
 
@@ -25,7 +28,7 @@
   height: 100px;
   width: 100px;
   min-width: 100px;
-
+  /* max-height: 50px; */
   margin: 15px;
 
   border-radius: 4px;
