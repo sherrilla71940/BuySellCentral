@@ -8,7 +8,10 @@ import { getStoreProducts } from "../../services/store-products-service";
 import { ProductType } from "../../../../global-types/product";
 import { renderProductsStore } from "../../zustand/should-refetch-slice";
 
-import { SortOptionStore } from "../../zustand/sort-option-slice";
+import {
+  SortOptionStore,
+  useSortOptionStore,
+} from "../../zustand/sort-option-slice";
 
 import * as Select from "@radix-ui/react-select";
 import {
@@ -90,13 +93,17 @@ export default function StoreItems() {
   const [fetchedProducts, setFetchedProducts] = useState([]);
   const [sortedStoreItems, setSortedStoreItems] = useState([...storeItems]);
 
+  const sortOption = useSortOptionStore((state) => state.sortOption);
+  const setSortOption = useSortOptionStore((state) => state.setSortOption);
+
   // when adding multiple products to cart, checkout does not update quantity on each product on products page
 
   const [selectedOption, setSelectedOption] = useState("newest");
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = event.target.value;
-    setSelectedOption(selectedValue);
+    // setSelectedOption(selectedValue);
+    setSortOption(selectedValue);
   };
 
   useEffect(() => {
@@ -136,11 +143,14 @@ export default function StoreItems() {
     //   const sorted = sortProductsHelper(storeItems, selectedOption);
 
     // );
-    const sorted = sortProductsHelper(storeItems, selectedOption);
+    // const sorted = sortProductsHelper(storeItems, selectedOption);
+    const sorted = sortProductsHelper(storeItems, sortOption);
     setSortedStoreItems(sorted);
-    console.log("selected option:", selectedOption);
+    // console.log("selected option:", selectedOption);
+    console.log("selected option:", sortOption);
     // change above to call the sorthelperFunc, with default to newest
-  }, [storeItems, selectedOption]);
+    // }, [storeItems, selectedOption]);
+  }, [storeItems, sortOption]);
 
   // come back to sorting later
 
@@ -173,7 +183,7 @@ export default function StoreItems() {
           id="options"
           name="options"
           onChange={handleOptionChange}
-          defaultValue={selectedOption}
+          defaultValue={sortOption}
           className={styles.select}
         >
           <option value="newest">Newest</option>
