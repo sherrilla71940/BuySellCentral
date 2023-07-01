@@ -32,13 +32,15 @@ export default function SellerStore() {
   }, [id, shouldReRender]);
 
   return (
-    <div className={styles.storeItems}>
-      <h1>MY STORE:</h1>
+    <div>
+      <h1 className={styles.heading}>MY STORE:</h1>
       {
         // {products.length &&
-        products.map((product: ProductType) => (
-          <Item key={product.id} product={product} />
-        ))
+        <div className={styles.storeItems}>
+          {products.map((product: ProductType) => (
+            <Item key={product.id} product={product} />
+          ))}
+        </div>
       }
     </div>
   );
