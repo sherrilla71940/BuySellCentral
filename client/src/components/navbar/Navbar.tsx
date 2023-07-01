@@ -87,6 +87,7 @@ export default function Navbar() {
         </h1>
 
         <input
+          // onClick={(e) => e.stopPropagation()}
           className={styles.navbarCenter}
           placeholder="Search for a specific product"
         />

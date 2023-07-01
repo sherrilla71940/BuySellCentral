@@ -8,14 +8,18 @@ import { getStoreProducts } from "../../services/store-products-service";
 import { ProductType } from "../../../../global-types/product";
 import { renderProductsStore } from "../../zustand/should-refetch-slice";
 
-// function sortProductsByCreatedAt(products: ProductType[]): ProductType[] {
-//   return [...products].sort((a, b) => {
-//     const dateA: any = a.createdAt && new Date(a.createdAt).getTime();
-//     const dateB: any = b.createdAt && new Date(b.createdAt).getTime();
-//     return ((dateB as number) - dateA) as number;
-//   });
-// }
 import { SortOptionStore } from "../../zustand/sort-option-slice";
+
+import * as Select from "@radix-ui/react-select";
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+} from "@radix-ui/react-icons";
+
+// import "./styles.css";
+
+// console.log(CheckIcon);
 
 function sortProductsByCreatedAt(
   products: ProductType[],
@@ -95,10 +99,6 @@ export default function StoreItems() {
     setSelectedOption(selectedValue);
   };
 
-  // useEffect(() => {
-  //   console.log("selected option:", selectedOption);
-  // }, [selectedOption]);
-
   useEffect(() => {
     const fetchAllStoreProducts = async () => {
       try {
@@ -128,8 +128,6 @@ export default function StoreItems() {
     console.log(shouldReRender);
   }, [shouldReRender]);
 
-  function sortProducts() {}
-
   useEffect(() => {
     console.log("storeItems", storeItems);
     console.log("store:", storeItems);
@@ -152,13 +150,31 @@ export default function StoreItems() {
 
   return (
     <div id={styles.container}>
-      <div id={styles.options}>
+      {/* <div id={styles.options}>
         <label htmlFor="options">Sort By:</label>
         <select
           id="options"
           name="options"
           onChange={handleOptionChange}
           defaultValue={"newest"}
+        >
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="most expensive">Most Expensive</option>
+          <option value="least expensive">Least expensive</option>
+          <option value="quantity">Quantity</option>
+        </select>
+      </div> */}
+      <div className={styles.options}>
+        <label htmlFor="options" className={styles.label}>
+          Sort By:
+        </label>
+        <select
+          id="options"
+          name="options"
+          onChange={handleOptionChange}
+          defaultValue={selectedOption}
+          className={styles.select}
         >
           <option value="newest">Newest</option>
           <option value="oldest">Oldest</option>
