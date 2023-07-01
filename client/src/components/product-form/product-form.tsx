@@ -257,7 +257,7 @@ export default function ProductForm() {
       <h2>PRODUCT INFORMATION:</h2>
       <form id={styles.form}>
         <fieldset>
-          <label className={styles.label}>name</label> <br />
+          <label className={styles.label}>Name</label> <br />
           <input
             onClick={(e) => {
               e.stopPropagation();
@@ -272,7 +272,7 @@ export default function ProductForm() {
           />
         </fieldset>
         <fieldset>
-          <label className={styles.label}>category</label> <br />
+          <label className={styles.label}>Category</label> <br />
           <input
             onClick={(e) => {
               e.stopPropagation();
@@ -287,7 +287,7 @@ export default function ProductForm() {
           />
         </fieldset>
         <fieldset>
-          <label className={styles.label}>price</label> <br />
+          <label className={styles.label}>Price</label> <br />
           <input
             onClick={(e) => {
               e.stopPropagation();
@@ -302,7 +302,7 @@ export default function ProductForm() {
           />
         </fieldset>
         <fieldset>
-          <label className={styles.label}>quantity</label> <br />
+          <label className={styles.label}>Quantity</label> <br />
           <input
             onClick={(e) => {
               e.stopPropagation();
