@@ -4,7 +4,7 @@
   /* margin-bottom: 20px; */
   text-justify: initial;
   cursor: pointer;
-  width: 210px;
+  width: 180px;
   /* max-height: 481px; */
   height: 250px;
   /* border: 0.1px solid #118259; */
@@ -58,8 +58,8 @@
 
 .img {
   display: block;
-  width: 230px;
-  height: 230px;
+  /* width: 260px;
+  height: 260px; */
   border-radius: 5px;
   /* background-color: #c4ddd4; */
 }

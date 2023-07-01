@@ -9,6 +9,7 @@
   /* background-color: #eeeeee; */
   /* color: rgb(240, 240, 240); */
   border-bottom: 1px solid #118259;
+  /* border-bottom: 1px solid #fff6f4; */
   z-index: 100;
   /* background-color: #525fe1; */
   background-color: #c2dedc;
@@ -24,6 +25,7 @@
   background-color: #4942e4;
   background-color: #5249f3;
   background-color: #2b3467;
+  background-color: #2b5967;
 }
 
 .navbarLeft {
@@ -37,6 +39,7 @@
   color: #116a7b;
   color: #ece5c7;
   color: #fff6f4;
+  color: rgb(240, 240, 240);
 
   cursor: pointer;
 }
@@ -65,13 +68,21 @@
 
   outline: none;
   border-radius: 4px;
-  color: #118259;
-  background-color: #c4ddd4;
+  /* color: #118259; */
+  color: #000000;
+  /* color: #adddd0; */
+  /* color: #fff6f4; */
+  /* background-color: #c4ddd4; */
+  /* background-color: #fff6f4; */
+  background-color: rgb(240, 240, 240);
 }
 
 .navbarCenter:focus,
 .navbarCenter:hover {
   border: 1px solid #118259;
+  /* border: 1px solid #161b1a; */
+  /* transform: scale(1.01); */
+  /* border: 0.5px solid black; */
 }
 
 .navbarRight {
@@ -87,12 +98,15 @@
 
 .cartItems {
   color: #118259;
+  color: black;
   /* width: 30px; */
   min-width: 30px;
   height: 30px;
   border-radius: 4px;
-  border: 2px solid #118259;
+  /* border: 2px solid #118259; */
+  border: 2px solid #fff6f4;
   /* background-color: #eeeeee; */
+  background-color: #fff6f4;
   background-color: rgb(240, 240, 240);
 
   margin-left: 10px;
@@ -123,7 +137,8 @@
   height: 45px;
   border-radius: 100%;
   background-color: #c4ddd4;
-
+  border: 1px solid black;
+  border: 1px solid white;
   margin-left: 10px;
 
   cursor: pointer;
@@ -131,6 +146,7 @@
 
 .button {
   background-color: #118259;
+  /* background-color: #fff6f4; */
   padding-bottom: 12px;
   /* padding-bottom: 8px; */
 }
@@ -158,8 +174,14 @@
   /* padding-top: 30px; */
   padding-left: 5px;
   /* margin-right: 30px; */
-  color: #118259;
+  /* color: #118259; */
+  color: #fff6f4;
+  /* color: #adddd0; */
   max-width: 137.39px;
   word-wrap: break-word;
   /* font-size: 12px; */
+}
+
+h4 {
+  font-size: 13px;
 }
