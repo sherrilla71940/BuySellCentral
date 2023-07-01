@@ -121,7 +121,7 @@ export default function CartItem({
         <div className={styles.left}>
           <p className={styles.name}>{fetchedItem?.name}</p>
           {/* <p className={styles.size}>{fetchedItem?.size}</p> */}
-          <p className={styles.price}>{fetchedItem?.price}</p>
+          <p className={styles.price}>${fetchedItem?.price}</p>
         </div>
 
         <div className={styles.right}>

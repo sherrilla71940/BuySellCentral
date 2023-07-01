@@ -189,7 +189,7 @@ export default function ShoppingCart() {
 
           <div className={styles.cartFooter}>
             <div className={styles.total}>
-              <h3>Total</h3>
+              <h3>Total: </h3>
               {/* <h3
                 className={styles.totalValue}
               >
