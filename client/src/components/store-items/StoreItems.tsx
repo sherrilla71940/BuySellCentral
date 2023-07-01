@@ -151,26 +151,28 @@ export default function StoreItems() {
   }
 
   return (
-    <>
-      <label htmlFor="options">Sort By:</label>
-      <select
-        id="options"
-        name="options"
-        onChange={handleOptionChange}
-        defaultValue={"newest"}
-      >
-        <option value="newest">Newest</option>
-        <option value="oldest">Oldest</option>
-        <option value="most expensive">Most Expensive</option>
-        <option value="least expensive">Least expensive</option>
-        <option value="quantity">Quantity</option>
-      </select>
+    <div id={styles.container}>
+      <div id={styles.options}>
+        <label htmlFor="options">Sort By:</label>
+        <select
+          id="options"
+          name="options"
+          onChange={handleOptionChange}
+          defaultValue={"newest"}
+        >
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="most expensive">Most Expensive</option>
+          <option value="least expensive">Least expensive</option>
+          <option value="quantity">Quantity</option>
+        </select>
+      </div>
       <div className={styles.storeItems}>
         {sortedStoreItems.map(
           (product: ProductType) =>
             product.quantity >= 1 && <Item key={product.id} product={product} />
         )}
       </div>
-    </>
+    </div>
   );
 }

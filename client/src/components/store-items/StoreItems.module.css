@@ -2,6 +2,19 @@
 /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Mastering_Wrapping_of_Flex_Items */
 /* https://stackoverflow.com/questions/52417889/setting-minimum-and-maximum-number-of-columns-using-css-grid */
 
+#container {
+  /* height: 1000px;
+  background-color: red; */
+  display: flex;
+  flex-direction: column;
+  padding-top: 100px;
+}
+
+#options {
+  /* height: 1000px;
+  background-color: red; */
+}
+
 .storeItems {
   box-sizing: border-box;
   width: 100%;
@@ -10,8 +23,8 @@
   /* height: calc(200vh); */
   /* height: calc(90vh - 65px); */
   /* padding: 50px 75px 0 75px; */
-  padding: 50px 75px 0 60px;
-  padding-top: 80px;
+  padding: 20px 75px 0 60px;
+  /* padding-top: 80px; */
   /* background-color: #eeeeee; */
   background-color: rgb(240, 240, 240);
   /* overflow: scroll; */

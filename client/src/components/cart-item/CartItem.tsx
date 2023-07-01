@@ -84,7 +84,7 @@ export default function CartItem({
   console.log(fetchedItem?.pictureUrl);
   return (
     <div className={styles.container}>
-      <p
+      {/* <p
         className={styles.delete}
         onClick={(e) => {
           e.stopPropagation();
@@ -96,7 +96,7 @@ export default function CartItem({
         }}
       >
         +
-      </p>
+      </p> */}
       {/* <div id={styles.imageAndCloseWrapper}> */}
       <img
         className={styles.img}
@@ -168,6 +168,21 @@ export default function CartItem({
       >
         +
       </p> */}
+      <div id={styles.closeWrapper}>
+        <p
+          className={styles.delete}
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteProductFromShoppingCart({
+              userId: id,
+              productId: cartItem.productId,
+            });
+            removeFromCart(cartItem.id);
+          }}
+        >
+          +
+        </p>
+      </div>
     </div>
   );
 }

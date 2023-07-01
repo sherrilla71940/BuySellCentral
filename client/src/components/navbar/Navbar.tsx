@@ -88,7 +88,7 @@ export default function Navbar() {
 
         <input
           className={styles.navbarCenter}
-          placeholder="Search for a product"
+          placeholder="Search for a specific product"
         />
 
         <div className={styles.navbarRight}>

@@ -5,9 +5,14 @@ li {
 .container {
   /* flex-direction: column; */
   display: flex;
+  /* align-content: space-between; */
   /* flex-direction: column; */
   /* max-height: 224.52px; */
   align-items: center;
+  justify-items: center;
+  justify-content: space-between;
+  /* width: fit-content; */
+
   color: #118259;
   width: 100%;
   /* min-width: 100px; */
@@ -17,27 +22,41 @@ li {
   height: 150px;
 }
 
-.container > p {
-  padding: 0;
-  margin: 0;
-  padding-right: 10px;
-  align-self: flex-end;
-  height: 5px;
-}
-
 .container p {
   padding: 0;
   margin: 0;
   margin-left: 15px;
+  padding-left: 10px;
+}
+
+#closeWrapper {
+  padding: 0;
+  margin: 0;
+  /* margin-left: 100px; */
+  /* padding-right: 10px; */
+  align-self: flex-start;
+  height: 5px;
+  /* text-align: start; */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-items: center; */
+  /* flex-direction: column; */
+  /* padding: 0 10px 0 10px; */
+}
+
+#closeWrapper > p {
+  /* padding-right: 20px; */
+  /* padding-bottom: 10px; */
 }
 
 .container > img {
   padding: 0;
   margin: 0;
+  margin: 0 10px 0 10px;
 }
 
 #imageAndCloseWrapper {
-  display: flex;
+  /* display: flex; */
   /* position: relative; */
   /* justify-items: flex-start; */
   /* align-items: flex-end; */
@@ -80,9 +99,11 @@ li {
 
 .right {
   display: flex;
-  justify-content: space-between;
-  width: 70px;
+  /* justify-content: space-between; */
+  /* justify-content: s; */
+  /* width: 70px; */
   max-height: 20px;
+  max-width: 30px;
 }
 
 .increase,
