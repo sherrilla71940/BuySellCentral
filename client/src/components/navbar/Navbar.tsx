@@ -17,6 +17,7 @@ export default function Navbar() {
   const openCart = useCartSlice((state) => state.openCart);
   const closeCart = useCartSlice((state) => state.closeCart);
   const cartItems = useCartSlice((state) => state.cartItems);
+  const isOpen = useCartSlice((state) => state.isOpen);
 
   const { loggedIn, username, email, setUsername } = userStore();
   // const { shouldReRender, setRerender } = renderProductsStore();
@@ -35,12 +36,20 @@ export default function Navbar() {
 
   function clickAvatar() {
     closeCart();
-    setVisibility(true);
+    if (visible) {
+      setVisibility(false);
+    } else {
+      setVisibility(true);
+    }
   }
 
   function switchBar() {
     console.log("should switch");
-    openCart();
+    if (isOpen) {
+      closeCart();
+    } else {
+      openCart();
+    }
     setVisibility(false);
   }
 
@@ -77,7 +86,10 @@ export default function Navbar() {
           BuySellCentral
         </h1>
 
-        <input className={styles.navbarCenter} />
+        <input
+          className={styles.navbarCenter}
+          placeholder="Search for a product"
+        />
 
         <div className={styles.navbarRight}>
           {!loggedIn ? null : (

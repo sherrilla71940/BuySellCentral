@@ -84,11 +84,39 @@ export default function CartItem({
   console.log(fetchedItem?.pictureUrl);
   return (
     <div className={styles.container}>
+      <p
+        className={styles.delete}
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteProductFromShoppingCart({
+            userId: id,
+            productId: cartItem.productId,
+          });
+          removeFromCart(cartItem.id);
+        }}
+      >
+        +
+      </p>
+      {/* <div id={styles.imageAndCloseWrapper}> */}
       <img
         className={styles.img}
         src={fetchedItem?.pictureUrl}
         alt="Product Image"
       />
+      {/* <p
+          className={styles.delete}
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteProductFromShoppingCart({
+              userId: id,
+              productId: cartItem.productId,
+            });
+            removeFromCart(cartItem.id);
+          }}
+        >
+          +
+        </p> */}
+      {/* </div> */}
       <div className={styles.itemInfo}>
         <div className={styles.left}>
           <p className={styles.name}>{fetchedItem?.name}</p>
@@ -126,20 +154,6 @@ export default function CartItem({
             +
           </p>
         </div>
-
-        <p
-          className={styles.delete}
-          onClick={(e) => {
-            e.stopPropagation();
-            deleteProductFromShoppingCart({
-              userId: id,
-              productId: cartItem.productId,
-            });
-            removeFromCart(cartItem.id);
-          }}
-        >
-          +
-        </p>
       </div>
       {/* <p
         className={styles.delete}
