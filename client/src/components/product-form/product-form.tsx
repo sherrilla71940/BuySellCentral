@@ -255,7 +255,7 @@ export default function ProductForm() {
   return (
     <div className={styles.container}>
       <h2>PRODUCT INFORMATION:</h2>
-      <form>
+      <form id={styles.form}>
         <fieldset>
           <label className={styles.label}>name</label> <br />
           <input
@@ -268,6 +268,7 @@ export default function ProductForm() {
             type="text"
             onChange={nameHandler}
             required
+            placeholder="Your name"
           />
         </fieldset>
         <fieldset>
@@ -282,6 +283,7 @@ export default function ProductForm() {
             type="text"
             onChange={categoryHandler}
             required
+            placeholder="Category of your product"
           />
         </fieldset>
         <fieldset>
@@ -296,6 +298,7 @@ export default function ProductForm() {
             type="number"
             onChange={priceHandler}
             required
+            placeholder="How much you want to charge"
           />
         </fieldset>
         <fieldset>
@@ -310,6 +313,7 @@ export default function ProductForm() {
             type="number"
             onChange={qtyHandler}
             required
+            // placeholder="How many you are selling"
           />
         </fieldset>
         <fieldset>

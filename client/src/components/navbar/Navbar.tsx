@@ -96,6 +96,7 @@ export default function Navbar() {
 
               <img
                 src={BagIcon}
+                // src={""}
                 className={styles.cartItemsIcon}
                 alt="logo"
                 onClick={(e) => {

@@ -13,10 +13,22 @@
 }
 
 .inputField {
+  box-sizing: border-box;
+  max-height: 36px;
   border-radius: 4px;
   border: #118259;
   background-color: #c4ddd4;
   color: #118259;
+  max-width: 365.5px;
+}
+
+.inputField:hover {
+  border: 1px solid black;
+}
+
+#form {
+  max-height: 551.63px;
+  max-width: 416px;
 }
 
 .label {

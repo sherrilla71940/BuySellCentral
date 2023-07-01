@@ -72,6 +72,11 @@
   margin-top: 15px;
 }
 
+.addToCart:hover,
+.addToCart:focus {
+  border: 1px solid #118259;
+}
+
 .sizes {
   display: flex;
   /* justify-content: center; */
