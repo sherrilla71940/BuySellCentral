@@ -48,12 +48,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 5px;
+  /* padding-top: 5px; */
+  /* margin-top: 0; */
 }
 
 .navbarLeft:hover {
   color: #18b47a;
   color: #adddd0;
+}
+
+#navCenterWrapper {
+  /* display: flex;
+  align-items: center; */
+  height: 25px;
+  height: 150%;
+  width: 60%;
 }
 
 .navbarCenter {
@@ -63,7 +72,7 @@
 
   height: 25px;
   width: 60%;
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: 0;
 
   outline: none;
@@ -79,9 +88,10 @@
 
 .navbarCenter:focus,
 .navbarCenter:hover {
-  border: 1px solid #118259;
+  /* border: 1px solid #118259; */
+  /* border: 1px solid #00b371; */
   /* border: 1px solid #161b1a; */
-  /* transform: scale(1.01); */
+  transform: scale(1.01);
   /* border: 0.5px solid black; */
 }
 
@@ -94,6 +104,9 @@
   max-width: 318.96px;
 
   margin-right: 30px;
+  margin-right: 20px;
+  justify-content: space-between;
+  align-content: space-between;
 }
 
 .cartItems {
@@ -101,8 +114,10 @@
   color: black;
   color: 2b5967;
   /* width: 30px; */
-  min-width: 30px;
+  width: 30px;
+  /* min-width: 35px; */
   height: 30px;
+  /* height: 35px; */
   border-radius: 4px;
   /* border: 2px solid #118259; */
   border: 2px solid #fff6f4;
@@ -110,17 +125,21 @@
   background-color: #fff6f4;
   background-color: rgb(240, 240, 240);
 
-  margin-left: 10px;
+  margin-left: 4px;
+  margin-right: 4px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   cursor: pointer;
+  margin-top: 4px;
 }
 
 .cartItemsIcon {
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  margin-left: 4px;
+  margin-right: 4px;
   min-width: 44px;
   cursor: pointer;
 }
@@ -144,7 +163,9 @@
   background-color: #c4ddd4;
   border: 1px solid black;
   border: 1px solid white;
-  margin-left: 10px;
+  /* margin-left: 10px; */
+  margin-left: 4px;
+  margin-right: 4px;
 
   cursor: pointer;
 }
@@ -153,7 +174,7 @@
   background-color: #118259;
   background-color: #c4ddd4;
   /* background-color: #fff6f4; */
-  padding-bottom: 12px;
+  /* padding-bottom: 12px; */
   /* padding-bottom: 8px; */
 }
 

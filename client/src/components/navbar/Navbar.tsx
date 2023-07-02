@@ -85,12 +85,13 @@ export default function Navbar() {
         >
           BuySellCentral
         </h1>
-
-        <input
-          // onClick={(e) => e.stopPropagation()}
-          className={styles.navbarCenter}
-          placeholder="Search for a specific product"
-        />
+        <div id={styles.navCenterWrapper}>
+          <input
+            // onClick={(e) => e.stopPropagation()}
+            className={styles.navbarCenter}
+            placeholder="Search for a specific product"
+          />
+        </div>
 
         <div className={styles.navbarRight}>
           {!loggedIn ? null : (
