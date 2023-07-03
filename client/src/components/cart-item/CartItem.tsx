@@ -13,6 +13,7 @@ import {
   updateCartProductQuantityService,
 } from "../../services/shopping-cart-service";
 // import { useState } from 'react';
+import CloseIcon from "../../assets/close-icon.svg";
 
 export default function CartItem({
   cartItem,
@@ -99,6 +100,21 @@ export default function CartItem({
           +
         </p>
       </div> */}
+      <div id={styles.closeWrapper}>
+        <img
+          className={styles.delete}
+          src={CloseIcon}
+          alt=""
+          onClick={(e) => {
+            e.stopPropagation();
+            deleteProductFromShoppingCart({
+              userId: id,
+              productId: cartItem.productId,
+            });
+            removeFromCart(cartItem.id);
+          }}
+        />
+      </div>
       <div id={styles.imageAndDetailsWrapper}>
         <img
           className={styles.img}
@@ -106,15 +122,49 @@ export default function CartItem({
           // alt="Product Image"
         />
         <div className={styles.itemInfo}>
-          <div className={styles.left}>
-            <p className={styles.name}>{fetchedItem?.name}</p>
-            <p className={styles.name}>{fetchedItem?.quantity} in stock</p>
-            <p className={styles.price}>${fetchedItem?.price}</p>
+          {/* <div className={styles.left}> */}
+          <p className={styles.name} id={styles.price}>
+            {fetchedItem?.name}
+          </p>
+          <p className={styles.price} id={styles.price}>
+            ${fetchedItem?.price}
+          </p>
+          <p className={styles.name}>{fetchedItem?.quantity} in stock</p>
+          {/* </div> */}
+          <div id={styles.changeQuantity}>
+            <p
+              className={styles.decrease}
+              onClick={(e) => {
+                e.stopPropagation();
+                cartItem.productQuantity > 1 &&
+                  updateQuantityStateAndInBackend("decrease", cartItem);
+              }}
+            >
+              -
+            </p>
+            <p>{cartItem?.productQuantity}</p>
+            <p
+              className={styles.increase}
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("q cartitem", cartItem);
+                if (
+                  (cartItem.stockQuantity as number) <= cartItem.productQuantity
+                ) {
+                  // alert("Cannot add more of a product than what is in stock");
+                  return;
+                }
+                cartItem.productQuantity &&
+                  updateQuantityStateAndInBackend("increase", cartItem);
+              }}
+            >
+              +
+            </p>
           </div>
         </div>
       </div>
 
-      <div id={styles.changeQuantity}>
+      {/* <div id={styles.changeQuantity}>
         <p
           className={styles.decrease}
           onClick={(e) => {
@@ -143,7 +193,7 @@ export default function CartItem({
         >
           +
         </p>
-      </div>
+      </div> */}
     </div>
   );
 }
