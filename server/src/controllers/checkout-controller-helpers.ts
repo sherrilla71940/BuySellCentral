@@ -27,15 +27,27 @@ requestCheckoutCart): Promise<number | void> {
     },
   });
 
+  // const filteredProducts = cart.filter(async (productObj) => {
+  //   const product = await ProductModel.findOne({
+  //     where: {
+  //       id: productObj.productId,
+  //     },
+  // })
+
+  // const foundProducts = await Promise.all(filteredProducts);
+
   const promises = cart.map(async (productObj) => {
     const product = await ProductModel.findOne({
       where: {
         id: productObj.productId,
       },
     });
+    if (!product) return;
     const productQuantity = product.quantity;
     if (productQuantity < productObj.productQuantity) {
-      throw new Error("can't buy more of same product than what is in stock");
+      throw new Error(
+        "can't buy more of same product than what is in stock from controller"
+      );
     }
   });
 
@@ -73,6 +85,7 @@ export async function updateProductQuantityAfterTransaction(
       id: productId,
     },
   });
+  if (!product) return;
   const preTransactionQuantity = product.quantity;
   product.set({
     quantity: preTransactionQuantity - purchaseQuantity,

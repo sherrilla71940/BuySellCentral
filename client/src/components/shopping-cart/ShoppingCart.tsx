@@ -134,6 +134,7 @@ export default function ShoppingCart() {
       console.log("data", data);
       // console.log(payload);
       if (data === "ran into error in checkout") {
+        console.log("data", data);
         alert("can't checkout more than what's in stock");
         emptyCart();
         closeCart();
