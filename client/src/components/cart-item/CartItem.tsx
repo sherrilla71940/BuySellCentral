@@ -84,26 +84,8 @@ export default function CartItem({
   console.log(fetchedItem?.pictureUrl);
   return (
     <div className={styles.container}>
-      {/* <p
-        className={styles.delete}
-        onClick={(e) => {
-          e.stopPropagation();
-          deleteProductFromShoppingCart({
-            userId: id,
-            productId: cartItem.productId,
-          });
-          removeFromCart(cartItem.id);
-        }}
-      >
-        +
-      </p> */}
-      {/* <div id={styles.imageAndCloseWrapper}> */}
-      <img
-        className={styles.img}
-        src={fetchedItem?.pictureUrl}
-        // alt="Product Image"
-      />
-      {/* <p
+      {/* <div id={styles.closeWrapper}>
+        <p
           className={styles.delete}
           onClick={(e) => {
             e.stopPropagation();
@@ -115,69 +97,48 @@ export default function CartItem({
           }}
         >
           +
-        </p> */}
-      {/* </div> */}
-      <div className={styles.itemInfo}>
-        <div className={styles.left}>
-          <p className={styles.name}>{fetchedItem?.name}</p>
-          {/* <p className={styles.size}>{fetchedItem?.size}</p> */}
-          <p className={styles.price}>${fetchedItem?.price}</p>
-        </div>
-
-        <div className={styles.right}>
-          <p
-            className={styles.decrease}
-            onClick={(e) => {
-              e.stopPropagation();
-              cartItem.productQuantity > 1 &&
-                updateQuantityStateAndInBackend("decrease", cartItem);
-            }}
-          >
-            -
-          </p>
-          <p className={styles.size}>{cartItem?.productQuantity}</p>
-          <p
-            className={styles.increase}
-            onClick={(e) => {
-              e.stopPropagation();
-              console.log("q cartitem", cartItem);
-              if (
-                (cartItem.stockQuantity as number) <= cartItem.productQuantity
-              ) {
-                // alert("Cannot add more of a product than what is in stock");
-                return;
-              }
-              cartItem.productQuantity &&
-                updateQuantityStateAndInBackend("increase", cartItem);
-            }}
-          >
-            +
-          </p>
+        </p>
+      </div> */}
+      <div id={styles.imageAndDetailsWrapper}>
+        <img
+          className={styles.img}
+          src={fetchedItem?.pictureUrl}
+          // alt="Product Image"
+        />
+        <div className={styles.itemInfo}>
+          <div className={styles.left}>
+            <p className={styles.name}>{fetchedItem?.name}</p>
+            <p className={styles.name}>{fetchedItem?.quantity} in stock</p>
+            <p className={styles.price}>${fetchedItem?.price}</p>
+          </div>
         </div>
       </div>
-      {/* <p
-        className={styles.delete}
-        onClick={(e) => {
-          e.stopPropagation();
-          deleteProductFromShoppingCart({
-            userId: id,
-            productId: cartItem.productId,
-          });
-          removeFromCart(cartItem.id);
-        }}
-      >
-        +
-      </p> */}
-      <div id={styles.closeWrapper}>
+
+      <div id={styles.changeQuantity}>
         <p
-          className={styles.delete}
+          className={styles.decrease}
           onClick={(e) => {
             e.stopPropagation();
-            deleteProductFromShoppingCart({
-              userId: id,
-              productId: cartItem.productId,
-            });
-            removeFromCart(cartItem.id);
+            cartItem.productQuantity > 1 &&
+              updateQuantityStateAndInBackend("decrease", cartItem);
+          }}
+        >
+          -
+        </p>
+        <p>{cartItem?.productQuantity}</p>
+        <p
+          className={styles.increase}
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log("q cartitem", cartItem);
+            if (
+              (cartItem.stockQuantity as number) <= cartItem.productQuantity
+            ) {
+              // alert("Cannot add more of a product than what is in stock");
+              return;
+            }
+            cartItem.productQuantity &&
+              updateQuantityStateAndInBackend("increase", cartItem);
           }}
         >
           +
