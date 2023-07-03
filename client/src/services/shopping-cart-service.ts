@@ -41,7 +41,7 @@ export async function deleteProductFromShoppingCart(body: any) {
 
 export async function getShoppingCartProducts(uid: string) {
   try {
-    console.log(uid);
+    console.log("fetch cart products", uid);
     const response = await fetch(
       `http://localhost:3003/shoppingcartproducts/${uid}`,
       {
@@ -54,6 +54,7 @@ export async function getShoppingCartProducts(uid: string) {
     if (response.ok) {
       const data = await response.json();
       // console.log('DATA: ', data)
+      console.log("fetch cart products", data);
       return data;
     }
   } catch (error) {

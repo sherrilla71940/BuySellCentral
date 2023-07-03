@@ -177,6 +177,7 @@ export async function addProductToShoppingCart(
   req: Request,
   res: Response
 ): Promise<void> {
+  console.log("add product reached");
   try {
     // res.json("add product endpoint reached");
     let shoppingCartId = null;
@@ -226,6 +227,8 @@ export async function addProductToShoppingCart(
       productId: req.body.productId,
       productQuantity: 1,
     });
+
+    console.log("new shopping cart:", newShoppingCartProduct);
 
     const stockProduct = await Product.findOne({
       where: {
@@ -326,24 +329,42 @@ export async function getAllProductsFromShoppingCart(
 
     if (hasShoppingCartID) {
       const { shoppingCartProducts } = shoppingCart;
-      const stockQuantities = shoppingCartProducts.map(async (prod) => {
+      console.log("in cart are", shoppingCartProducts);
+      const productsInCart = shoppingCartProducts.filter(async (prod) => {
+        return await Product.findOne({
+          where: {
+            id: prod.productId,
+          },
+        });
+      });
+
+      const stockQuantities = productsInCart.map(async (prod) => {
         const stockProduct = await Product.findOne({
           where: {
             id: prod.productId,
           },
         });
+        if (!stockProduct) {
+          return;
+        }
 
-        console.log("stock product", stockProduct.quantity);
+        console.log("stock product", stockProduct);
 
         // newShoppingCartProduct.stockQuantity = stockProduct.quantity;
-        // console.log("quantity is", stockProduct.quantity);
+        console.log("quantity is", stockProduct.quantity);
         return { ...prod.dataValues, stockQuantity: stockProduct.quantity };
       });
       // shopping
       // return res.json(shoppingCartProducts);
       const returnProducts = await Promise.all(stockQuantities);
       console.log("return product............", returnProducts);
-      res.json(returnProducts);
+      const filteredProducts = returnProducts.filter(
+        (prod) => prod != undefined
+      );
+      console.log("filtered product............", filteredProducts);
+      // res.json(returnProducts);
+      res.json(filteredProducts);
+      // res.json([1, 2, 3]);
     } else if (!hasShoppingCartID) {
       res.json(
         "this user does not have a cart, must add at least 1 product to cart first"
@@ -358,8 +379,8 @@ export async function getAllProductsFromShoppingCart(
     // );
   } catch (error) {
     // send a response
-    console.log(error);
-    res.json([]);
+    console.log("error in catch", error);
+    res.json("ran into error");
   }
 }
 

@@ -175,23 +175,33 @@ export default function StoreItems() {
           <option value="quantity">Quantity</option>
         </select>
       </div> */}
-      <div className={styles.options}>
-        <label htmlFor="options" className={styles.label}>
-          Sort By:
-        </label>
-        <select
-          id="options"
-          name="options"
-          onChange={handleOptionChange}
-          defaultValue={sortOption}
-          className={styles.select}
-        >
-          <option value="newest">Newest</option>
-          <option value="oldest">Oldest</option>
-          <option value="most expensive">Most Expensive</option>
-          <option value="least expensive">Least expensive</option>
-          <option value="quantity">Quantity</option>
-        </select>
+      <div id={styles.sortSearchWrapper}>
+        <div className={styles.options}>
+          <label htmlFor="options" className={styles.label}>
+            Sort By:
+          </label>
+          <select
+            id="options"
+            name="options"
+            onChange={handleOptionChange}
+            defaultValue={sortOption}
+            className={styles.select}
+          >
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="most expensive">Most Expensive</option>
+            <option value="least expensive">Least expensive</option>
+            <option value="quantity">Quantity</option>
+          </select>
+        </div>
+        {/* <div id={styles.navCenterWrapper}>
+          Search for a product:
+          <input
+            // onClick={(e) => e.stopPropagation()}
+            className={styles.navbarCenter}
+            placeholder="Search for a specific product"
+          />
+        </div> */}
       </div>
       <div className={styles.storeItems}>
         {sortedStoreItems.map(
