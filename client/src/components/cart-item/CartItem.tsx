@@ -101,7 +101,7 @@ export default function CartItem({
       <img
         className={styles.img}
         src={fetchedItem?.pictureUrl}
-        alt="Product Image"
+        // alt="Product Image"
       />
       {/* <p
           className={styles.delete}
