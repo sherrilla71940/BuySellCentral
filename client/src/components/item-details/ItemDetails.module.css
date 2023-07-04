@@ -162,7 +162,18 @@
   border-radius: 4px;
 
   color: black;
+  background-color: #118259;
+  background-color: #2b5967;
+  background-color: #ffffff;
   background-color: #c4ddd4;
+  color: rgb(0, 0, 0);
 
   cursor: pointer;
+  border: 1px solid #118259;
+}
+
+.addToCart:hover {
+  /* border: 1px solid white; */
+  border: 1px solid #118259;
+  /* transform: scale(1.01); */
 }

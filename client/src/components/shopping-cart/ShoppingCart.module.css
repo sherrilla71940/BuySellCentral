@@ -24,7 +24,7 @@
   width: 21vw;
   max-width: 600px;
   /* height: calc(100vh - 65px); */
-  height: calc(100vh - 70px);
+  height: calc(100vh - 65px);
   padding: 20px;
   border: 0.5px solid #118259;
   border-top: none;
@@ -40,6 +40,7 @@
   justify-content: space-between;
   align-items: center;
   color: #118259;
+  height: 30px;
 }
 
 .closeCart {
@@ -101,6 +102,8 @@
   align-items: center;
   background-color: #eeeeee;
   color: #118259;
+  margin: 0;
+  padding: 0;
 }
 
 .checkout {
@@ -123,4 +126,6 @@
   border-radius: 4px;
 
   cursor: pointer;
+  margin-top: 0;
+  padding-top: 0;
 }
