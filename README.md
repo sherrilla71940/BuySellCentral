@@ -10,34 +10,33 @@ There are several areas that require attention for future development. Here are 
 
 - **Integration of Transaction Records:** The backend API currently maintains transaction records, but this functionality needs to be integrated into the frontend. This will enable users to view their transaction history and provide better transparency.
 - **Real Transactions with Stripe:** Currently, the checkout process does not involve real transactions. To enable users to make actual payments and receive payments, integration with a payment gateway like Stripe will be used. This will enhance the app's functionality and make it a fully functional e-commerce platform.
-- **UI Improvement** Not much time was spent on the UI design and responsiveness, but this shouldn't take long.
-- **Enable Users to Update and Delete Listed Products** Like transactions, this is already set up in the backend and simply needs to be integrated with the frontend.
+- **Enable Sellers to Update and Delete Their Listed Products** Like transactions, this is already set up in the backend and simply needs to be integrated with the frontend.
 
 ## A quick glimpse into the app's UI
 
-![Home Page](/app%20screenshots/Screenshot%202023-06-18%20at%206.46.13%20PM.png)
+![Home Page](/app-screenshots/home-page.png)
 _Home Page_
 
-![Login Page](/app%20screenshots/Screenshot%202023-06-18%20at%206.46.53%20PM.png)
+![Login Page](/app-screenshots/login-page.png)
 _Login Page_
 
-![Registration Page](/app%20screenshots/Screenshot%202023-06-24%20at%205.39.46%20PM.png)
+![Registration Page](/app-screenshots/registration-page.png)
 _Registration Page_
 
-![Product Details Page](<app screenshots/Screenshot 2023-06-18 at 7.42.22 PM.png>)
-_Product Details Page_
-
-![Shopping Cart](/app%20screenshots/Screenshot%202023-06-18%20at%206.47.10%20PM.png)
+![Shopping Cart](/app-screenshots/shopping-cart.png)
 _Shopping Cart Page_
 
-![Navbar](/app%20screenshots/Screenshot%202023-06-18%20at%206.47.37%20PM.png)
+![Navbar](/app-screenshots/menu%20component.png)
 _Navbar_
 
-![List Product Page](/app%20screenshots/Screenshot%202023-06-18%20at%206.47.56%20PM.png)
-_List Product Page_
+![Product Details Page](/app-screenshots/item-details.png)
+_Product Details Page_
 
-![User Store](/app%20screenshots/Screenshot%202023-06-18%20at%206.48.08%20PM.png)
-_User Store Page_
+![Seller Store](/app-screenshots/seller-store.png)
+_Seller Store Page_
+
+![Sell Product Page](/app-screenshots/product-form.png)
+_Sell Product Page_
 
 ## Set up
 
