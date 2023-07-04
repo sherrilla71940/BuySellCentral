@@ -26,17 +26,20 @@ _Registration Page_
 ![Shopping Cart](/app-screenshots/shopping-cart.png)
 _Shopping Cart Page_
 
+![Sort Products](/app-screenshots/sorting.png)
+_Sort Products_
+
 ![Navbar](/app-screenshots/menu%20component.png)
 _Navbar_
 
 ![Product Details Page](/app-screenshots/item-details.png)
 _Product Details Page_
 
-![Seller Store](/app-screenshots/seller-store.png)
-_Seller Store Page_
-
 ![Sell Product Page](/app-screenshots/product-form.png)
 _Sell Product Page_
+
+![Seller Store](/app-screenshots/seller-store.png)
+_Seller Store Page_
 
 ## Set up
 
