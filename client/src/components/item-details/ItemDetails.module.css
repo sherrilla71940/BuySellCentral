@@ -1,4 +1,5 @@
 .container {
+  /* align-self: center; */
   display: flex;
   flex-direction: row;
   gap: 40px;
@@ -14,9 +15,40 @@
   height: 60vh;
 
   color: #118259;
+  color: black;
   /* background-color: #eeeeee; */
   background-color: rgb(240, 240, 240);
-  padding-top: 100px;
+  padding-top: 130px;
+  padding-left: 100px;
+}
+
+#tagsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 230px;
+}
+
+.tag {
+  display: flex;
+  justify-content: center;
+  border: 1px solid rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  background-color: rgb(243, 243, 243);
+  border-radius: 15px;
+  color: rgb(70, 107, 255);
+  color: #2b5967;
+  background-color: rgb(123, 70, 255);
+  background-color: #c4ddd4;
+  /* font-size: 1px; */
+  /* min-width: 85px; */
+  padding: 8px;
+  height: 35px;
+  align-items: center;
+  margin: 3px;
+}
+
+.tag h4 {
+  font-size: 13px;
 }
 
 .left,
@@ -28,6 +60,14 @@
   width: 400px;
   height: 400px;
   box-sizing: border-box;
+}
+
+.right {
+  padding-top: 20px;
+}
+
+.right h1:first-of-type {
+  margin-top: 15px;
 }
 
 .mainImage {
@@ -65,16 +105,17 @@
   border-radius: 4px;
   background-color: #C4DDD4;
 } */
-
+.sizes,
 .name,
 .price {
-  margin-top: 15px;
+  margin-top: 7px;
+  margin-bottom: 7px;
   font-size: large;
+  font-weight: 500;
 }
 
-.sizes,
 .addToCart {
-  margin-top: 15px;
+  margin-top: 105px;
 }
 
 .addToCart:hover,

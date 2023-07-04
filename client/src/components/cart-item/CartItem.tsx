@@ -14,6 +14,8 @@ import {
 } from "../../services/shopping-cart-service";
 // import { useState } from 'react';
 import CloseIcon from "../../assets/close-icon.svg";
+import UpvoteIcon from "../../assets/upvote.svg";
+import DownvoteIcon from "../../assets/downvote.svg";
 
 export default function CartItem({
   cartItem,
@@ -132,7 +134,7 @@ export default function CartItem({
           <p className={styles.name}>{fetchedItem?.quantity} in stock</p>
           {/* </div> */}
           <div id={styles.changeQuantity}>
-            <p
+            {/* <p
               className={styles.decrease}
               onClick={(e) => {
                 e.stopPropagation();
@@ -141,9 +143,21 @@ export default function CartItem({
               }}
             >
               -
-            </p>
-            <p>{cartItem?.productQuantity}</p>
-            <p
+            </p> */}
+            <img
+              className={styles.vote}
+              src={DownvoteIcon}
+              alt=""
+              onClick={(e) => {
+                e.stopPropagation();
+                cartItem.productQuantity > 1 &&
+                  updateQuantityStateAndInBackend("decrease", cartItem);
+              }}
+            />
+            <div id={styles.pWrapperVote}>
+              <p>{cartItem?.productQuantity}</p>
+            </div>
+            {/* <p
               className={styles.increase}
               onClick={(e) => {
                 e.stopPropagation();
@@ -159,7 +173,24 @@ export default function CartItem({
               }}
             >
               +
-            </p>
+            </p> */}
+            <img
+              className={styles.vote}
+              src={UpvoteIcon}
+              alt=""
+              onClick={(e) => {
+                e.stopPropagation();
+                console.log("q cartitem", cartItem);
+                if (
+                  (cartItem.stockQuantity as number) <= cartItem.productQuantity
+                ) {
+                  // alert("Cannot add more of a product than what is in stock");
+                  return;
+                }
+                cartItem.productQuantity &&
+                  updateQuantityStateAndInBackend("increase", cartItem);
+              }}
+            />
           </div>
         </div>
       </div>

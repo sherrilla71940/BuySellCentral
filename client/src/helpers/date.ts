@@ -110,11 +110,34 @@ export function getTimeDifference(date: DateString): string {
   const oneMinute = 60 * 1000; // One minute in milliseconds
   const oneHour = 60 * oneMinute; // One hour in milliseconds
   const oneDay = 24 * oneHour; // One day in milliseconds
+  const oneWeek = oneDay * 7;
+  const oneMonth = oneWeek * 4;
 
   const currentDate = new Date();
   const createdAt = new Date(date);
 
   const timeDifference = currentDate.getTime() - createdAt.getTime();
+
+  // if (timeDifference < oneMinute) {
+  //   const diffSeconds = Math.round(timeDifference / 1000);
+  //   if (diffSeconds === 1) return `${diffSeconds} second ago`;
+  //   return `${diffSeconds} seconds ago`;
+  // } else if (timeDifference < oneHour) {
+  //   const diffMinutes = Math.floor(timeDifference / oneMinute);
+  //   if (diffMinutes === 1) return `${diffMinutes} minute ago`;
+  //   return `${diffMinutes} minutes ago`;
+  // } else if (timeDifference < oneDay) {
+  //   const diffHours = Math.floor(timeDifference / oneHour);
+  //   if (diffHours === 1) return `${diffHours} hour ago`;
+  //   return `${diffHours} hours ago`;
+  // } else {
+  //   const diffDays = Math.floor(timeDifference / oneDay);
+  //   if (diffDays === 1) {
+  //     return "Yesterday";
+  //   } else {
+  //     return `${diffDays} days ago`;
+  //   }
+  // }
 
   if (timeDifference < oneMinute) {
     const diffSeconds = Math.round(timeDifference / 1000);
@@ -128,13 +151,21 @@ export function getTimeDifference(date: DateString): string {
     const diffHours = Math.floor(timeDifference / oneHour);
     if (diffHours === 1) return `${diffHours} hour ago`;
     return `${diffHours} hours ago`;
-  } else {
+  } else if (timeDifference < oneWeek) {
     const diffDays = Math.floor(timeDifference / oneDay);
     if (diffDays === 1) {
       return "Yesterday";
     } else {
       return `${diffDays} days ago`;
     }
+  } else if (timeDifference < oneMonth) {
+    const diffWeeks = Math.floor(timeDifference / oneWeek);
+    if (diffWeeks === 1) return `${diffWeeks} week ago`;
+    return `${diffWeeks} weeks ago`;
+  } else {
+    const diffMonths = Math.floor(timeDifference / oneMonth);
+    if (diffMonths === 1) return `${diffMonths} month ago`;
+    return `${diffMonths} months ago`;
   }
 }
 

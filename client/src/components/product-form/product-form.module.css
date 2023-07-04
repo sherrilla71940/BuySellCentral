@@ -37,6 +37,11 @@
 }
 
 .button {
+  background-color: rgb(107, 107, 107);
+  background-color: #118228;
   background-color: #118259;
+  /* background-color: #2b5967; */
+  color: white;
+  /* background-color: #2b5967; */
   padding-bottom: 12px;
 }

@@ -103,18 +103,26 @@ export default function ItemDetails() {
         <h1 className={styles.name} onClick={handleSizeSelection}>
           {product?.name}
         </h1>
-        <h4 className={styles.price}>$ {product?.price} USD</h4>
-        <h4 className={styles.price} onClick={handleSizeSelection}>
-          {product.quantity > 1
-            ? `${product.quantity} products in stock`
-            : `${product.quantity} product in stock`}
-        </h4>
-        <h4 className={styles.price} onClick={handleSizeSelection}>
-          Category: {product?.category}
-        </h4>
-        <h4 className={styles.price} onClick={handleSizeSelection}>
-          Seller: {product?.sellerName}
-        </h4>
+        <h1 className={styles.price}>${product?.price}</h1>
+        <div id={styles.tagsWrapper}>
+          <div className={styles.tag}>
+            <h4 className={styles.price} onClick={handleSizeSelection}>
+              {product.quantity > 1
+                ? `${product.quantity} products in stock`
+                : `${product.quantity} product in stock`}
+            </h4>
+          </div>
+          <div className={styles.tag}>
+            <h4 className={styles.price} onClick={handleSizeSelection}>
+              Category: {product?.category}
+            </h4>
+          </div>
+          <div className={styles.tag}>
+            <h4 className={styles.price} onClick={handleSizeSelection}>
+              Seller: {product?.sellerName}
+            </h4>
+          </div>
+        </div>
 
         {/* <div className={styles.sizes}>
           <div className={styles.size} onClick={handleSizeSelection}>
