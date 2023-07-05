@@ -8,8 +8,8 @@ The e-commerce app is designed to streamline the process of buying and selling p
 
 There are several areas that require attention for future development. Here are some of the key priorities:
 
-- **Integration of Transaction Records:** The backend API currently maintains transaction records, but this functionality needs to be integrated into the frontend. This will enable users to view their transaction history and provide better transparency.
-- **Real Transactions with Stripe:** Currently, the checkout process does not involve real transactions. To enable users to make actual payments and receive payments, integration with a payment gateway like Stripe will be used. This will enhance the app's functionality and make it a fully functional e-commerce platform.
+- **Integration of Transaction Records:** The backend API currently maintains transaction for buyers and sellers, but this functionality needs to be integrated into the frontend. This will enable users to view their transaction history and provide better transparency.
+- **Real Payment with Stripe:** Currently, the checkout process does not involve real payment. To enable users to make and receive actual payments, integration with a payment gateway like Stripe will be used. This will enhance the app's functionality and make it a fully functional e-commerce platform.
 - **Enable Sellers to Update and Delete Their Listed Products** Like transactions, this is already set up in the backend and simply needs to be integrated with the frontend.
 
 ## A quick glimpse into the app's UI

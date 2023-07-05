@@ -359,7 +359,7 @@ export async function getAllProductsFromShoppingCart(
       const returnProducts = await Promise.all(stockQuantities);
       console.log("return product............", returnProducts);
       const filteredProducts = returnProducts.filter(
-        (prod) => prod != undefined
+        (prod) => prod != undefined && prod.stockQuantity !== 0
       );
       console.log("filtered product............", filteredProducts);
       // res.json(returnProducts);
