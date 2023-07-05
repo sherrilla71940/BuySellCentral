@@ -2,7 +2,11 @@
 
 ## What e-commerce-app does
 
-The e-commerce app is designed to streamline the process of buying and selling products. It includes essential features such as user registration, login, and logout functionality, and users' shopping carts persist across sessions, allowing them to easily resume their previous shopping experience upon logging back in. Users can add multiple products of varying quantities from different sellers to their shopping carts and check them out simultaneously. The app also ensures accurate inventory representation and removes sold-out products from the marketplace.
+An e-commerce app designed to streamline the process of buying and selling products. It includes essential features such as user registration, login, and logout functionality, and users' shopping carts persist across sessions, allowing them to easily resume their previous shopping experience upon logging back in. Users can add multiple products of varying quantities from different sellers to their shopping carts and check them out simultaneously. The app also ensures accurate inventory representation and removes sold-out products from the marketplace.
+
+The backend was built using TypeScript, Express/Node, PostgreSQL, Sequelize (ORM), and sequelize-typeScript for TypeScript integration with Sequelize.
+
+The frontend was also built using TypeScript along with React, React Router, Vite, CSS modules, Radix UI, Firebase for authentication and authorization, Cloudinary for media upload, and Zustand for state management.
 
 ## Future Improvements
 
